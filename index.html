@@ -803,10 +803,9 @@ Contacto
 
 </footer>
 
-<!-- PRODUCT MODAL -->
-
+```html
 <!-- ========================= -->
-<!-- REEMPLAZA TODO EL MODAL -->
+<!-- PRODUCT MODAL -->
 <!-- ========================= -->
 
 <div
@@ -814,11 +813,11 @@ id="productModal"
 class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50 p-6"
 >
 
-<div class="bg-white w-full max-w-[1500px] rounded-[40px] overflow-hidden relative max-h-[95vh] overflow-y-auto">
+<div class="bg-white w-full max-w-[1400px] rounded-[40px] overflow-hidden relative max-h-[95vh] overflow-y-auto">
 
 <button
 onclick="closeProduct()"
-class="absolute right-6 top-6 text-4xl z-20 hover:scale-110 transition"
+class="absolute right-6 top-6 text-4xl z-20"
 >
 ✕
 </button>
@@ -832,14 +831,14 @@ class="absolute right-6 top-6 text-4xl z-20 hover:scale-110 transition"
 <img
 id="modalImage"
 src=""
-class="w-full max-h-[760px] object-contain rounded-[30px]"
+class="w-full max-h-[650px] object-contain rounded-[30px]"
 >
 
 </div>
 
 <!-- INFO -->
 
-<div class="p-10 flex flex-col justify-center">
+<div class="p-10">
 
 <div
 id="modalCategory"
@@ -857,7 +856,7 @@ Producto
 
 <div
 id="modalPrice"
-class="text-6xl font-black text-blue-700 mb-7"
+class="text-5xl font-black text-blue-700 mb-7"
 >
 $0
 </div>
@@ -865,38 +864,7 @@ $0
 <p class="text-gray-600 text-xl leading-relaxed mb-8">
 Producto premium con garantía oficial.
 Ideal para gaming, oficina y uso profesional.
-Envíos rápidos a todo el país.
 </p>
-
-<!-- BENEFITS -->
-
-<div class="grid grid-cols-2 gap-4 mb-8">
-
-<div class="bg-gray-100 rounded-3xl p-5">
-
-<div class="text-gray-500 mb-2">
-🚚 Envío
-</div>
-
-<div class="font-black text-xl">
-24/48 hs
-</div>
-
-</div>
-
-<div class="bg-gray-100 rounded-3xl p-5">
-
-<div class="text-gray-500 mb-2">
-🛡 Garantía
-</div>
-
-<div class="font-black text-xl">
-12 meses
-</div>
-
-</div>
-
-</div>
 
 <!-- QTY -->
 
@@ -910,7 +878,7 @@ Cantidad
 
 <button
 onclick="decreaseModalQty()"
-class="w-14 h-14 rounded-2xl bg-red-500 hover:bg-red-400 text-white text-2xl font-black transition"
+class="w-14 h-14 rounded-2xl bg-red-500 text-white text-2xl font-black"
 >
 -
 </button>
@@ -924,7 +892,7 @@ class="w-20 h-14 rounded-2xl bg-gray-100 flex items-center justify-center text-2
 
 <button
 onclick="increaseModalQty()"
-class="w-14 h-14 rounded-2xl bg-green-500 hover:bg-green-400 text-white text-2xl font-black transition"
+class="w-14 h-14 rounded-2xl bg-green-500 text-white text-2xl font-black"
 >
 +
 </button>
@@ -937,14 +905,38 @@ class="w-14 h-14 rounded-2xl bg-green-500 hover:bg-green-400 text-white text-2xl
 
 <button
 id="modalAddBtn"
-class="btn-primary py-5 rounded-3xl font-black text-2xl mb-10"
+class="btn-primary w-full py-4 rounded-2xl font-black text-xl"
 >
 Agregar al carrito
 </button>
 
+<!-- RELATED -->
 
+<div class="mt-10">
 
-<!-- CART -->
+<h3 class="text-3xl font-black mb-5">
+Productos relacionados
+</h3>
+
+<div
+id="productCombos"
+class="grid grid-cols-1 md:grid-cols-3 gap-5"
+>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ========================= -->
+<!-- CARRITO -->
+<!-- ========================= -->
 
 <div
 id="cartSidebar"
@@ -957,7 +949,10 @@ class="fixed top-0 right-[-500px] w-[430px] h-full bg-white shadow-2xl z-50 tran
 Carrito
 </h2>
 
-<button onclick="toggleCart()" class="text-3xl">
+<button
+onclick="closeCart()"
+class="text-3xl"
+>
 ✕
 </button>
 
@@ -975,13 +970,17 @@ Carrito
 
 </div>
 
-<button class="w-full bg-green-500 hover:bg-green-400 transition text-white font-black py-4 rounded-2xl text-xl">
+<button
+class="w-full bg-green-500 hover:bg-green-400 transition text-white font-black py-4 rounded-2xl text-xl"
+>
 Finalizar compra
 </button>
 
 </div>
 
 </div>
+```
+
 
 <!-- ======================================= -->
 <!-- MODAL LOGIN / REGISTER -->
@@ -1114,8 +1113,7 @@ class="fixed bottom-7 right-7 w-16 h-16 rounded-full bg-green-500 hover:bg-green
 💬
 </a>
 
-
-
+```html
 <script>
 
 /* ===================================== */
@@ -1181,14 +1179,6 @@ document.getElementById("loginContent")
 document.getElementById("registerContent")
 .classList.add("hidden");
 
-document.getElementById("loginTab")
-.className =
-"flex-1 bg-blue-700 text-white py-4 rounded-2xl font-black text-lg";
-
-document.getElementById("registerTab")
-.className =
-"flex-1 bg-gray-100 py-4 rounded-2xl font-black text-lg";
-
 }
 
 function showRegister(){
@@ -1198,14 +1188,6 @@ document.getElementById("registerContent")
 
 document.getElementById("loginContent")
 .classList.add("hidden");
-
-document.getElementById("registerTab")
-.className =
-"flex-1 bg-blue-700 text-white py-4 rounded-2xl font-black text-lg";
-
-document.getElementById("loginTab")
-.className =
-"flex-1 bg-gray-100 py-4 rounded-2xl font-black text-lg";
 
 }
 
@@ -1223,17 +1205,12 @@ const password =
 document.getElementById("registerPassword")
 .value.trim();
 
-const success =
-document.getElementById("registerSuccess");
-
 if(!email || !password){
 
 alert("Completa todos los campos");
 return;
 
 }
-
-/* EXISTE */
 
 const exists =
 users.find(user => user.email === email);
@@ -1245,8 +1222,6 @@ return;
 
 }
 
-/* SAVE */
-
 users.push({
 email,
 password
@@ -1257,17 +1232,14 @@ localStorage.setItem(
 JSON.stringify(users)
 );
 
-/* SUCCESS */
-
-success.classList.remove("hidden");
+document.getElementById("registerSuccess")
+.classList.remove("hidden");
 
 document.getElementById("registerEmail")
 .value = "";
 
 document.getElementById("registerPassword")
 .value = "";
-
-/* CAMBIAR A LOGIN */
 
 setTimeout(()=>{
 
@@ -1296,12 +1268,8 @@ document.getElementById("loginError");
 
 error.classList.add("hidden");
 
-/* BUSCAR CUENTA */
-
 const existingUser =
 users.find(user => user.email === email);
-
-/* NO EXISTE */
 
 if(!existingUser){
 
@@ -1323,8 +1291,6 @@ return;
 
 }
 
-/* PASSWORD */
-
 if(existingUser.password !== password){
 
 error.innerHTML =
@@ -1335,8 +1301,6 @@ error.classList.remove("hidden");
 return;
 
 }
-
-/* LOGIN OK */
 
 const username =
 email.split("@")[0];
@@ -1442,8 +1406,6 @@ image:"https://images.unsplash.com/photo-1580894894513-541e068a3e2b?q=80&w=1200&
 
 ];
 
-
-
 /* ===================================== */
 /* ELEMENTS */
 /* ===================================== */
@@ -1454,11 +1416,49 @@ document.getElementById("productsGrid");
 const offersCarousel =
 document.getElementById("offersCarousel");
 
-const comboTrack =
-document.getElementById("comboTrack");
+/* ===================================== */
+/* CART */
+/* ===================================== */
 
-const comboDots =
-document.getElementById("comboDots");
+let cart = [];
+
+/* ===================================== */
+/* CART SIDEBAR */
+/* ===================================== */
+
+function openCart(){
+
+document.getElementById("cartSidebar")
+.style.right = "0px";
+
+}
+
+function closeCart(){
+
+document.getElementById("cartSidebar")
+.style.right = "-500px";
+
+}
+
+function toggleCart(){
+
+const cartSidebar =
+document.getElementById("cartSidebar");
+
+const currentRight =
+window.getComputedStyle(cartSidebar).right;
+
+if(currentRight === "0px"){
+
+closeCart();
+
+}else{
+
+openCart();
+
+}
+
+}
 
 /* ===================================== */
 /* RENDER PRODUCTS */
@@ -1472,7 +1472,7 @@ list.forEach(product=>{
 
 productsGrid.innerHTML += `
 
-<div class="product-card bg-white rounded-[30px] overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all">
+<div class="product-card bg-white rounded-[30px] overflow-hidden shadow-lg border border-gray-100">
 
 <img
 src="${product.image}"
@@ -1485,7 +1485,7 @@ class="h-64 w-full object-cover"
 ${product.category}
 </div>
 
-<h3 class="font-black text-xl mb-3 min-h-[70px] text-gray-800">
+<h3 class="font-black text-xl mb-3 min-h-[70px]">
 ${product.title}
 </h3>
 
@@ -1495,7 +1495,7 @@ $${product.price.toLocaleString()}
 
 <button
 onclick="openProduct(${product.id})"
-class="btn-primary w-full py-4 rounded-2xl font-black text-lg"
+class="btn-primary w-full py-3 rounded-2xl font-black text-lg"
 >
 Ver producto
 </button>
@@ -1506,176 +1506,6 @@ Ver producto
 
 `;
 
-});
-
-}
-
-/* ===================================== */
-/* OFFERS */
-/* ===================================== */
-
-let currentOfferSlide = 0;
-
-function renderOffers(){
-
-offersCarousel.innerHTML = "";
-
-for(let i = 0; i < products.length; i += 2){
-
-const pair = products.slice(i,i+2);
-
-offersCarousel.innerHTML += `
-
-<div class="min-w-full grid grid-cols-1 md:grid-cols-2 gap-6">
-
-${pair.map(product => `
-
-<div class="bg-gray-100 rounded-[35px] overflow-hidden shadow-lg border border-gray-200 hover:shadow-2xl transition-all">
-
-<div class="relative">
-
-<img
-src="${product.image}"
-class="h-[320px] w-full object-cover"
->
-
-<div class="absolute top-4 left-4 bg-red-500 text-white font-black px-4 py-2 rounded-full text-sm">
-OFERTA
-</div>
-
-</div>
-
-<div class="p-6">
-
-<div class="text-blue-700 text-sm font-black uppercase mb-3">
-${product.category}
-</div>
-
-<h3 class="font-black text-3xl text-gray-800 mb-4 min-h-[90px]">
-${product.title}
-</h3>
-
-<div class="flex items-end gap-3 mb-5">
-
-<div class="text-5xl font-black text-blue-700">
-$${product.price.toLocaleString()}
-</div>
-
-<div class="text-gray-400 line-through text-xl">
-$${Math.floor(product.price * 1.35).toLocaleString()}
-</div>
-
-</div>
-
-<button
-onclick="openProduct(${product.id})"
-class="btn-primary w-full py-5 rounded-2xl font-black text-xl"
->
-Ver producto
-</button>
-
-</div>
-
-</div>
-
-`).join("")}
-
-</div>
-
-`;
-
-}
-
-updateOffersSlider();
-
-}
-
-/* ===================================== */
-/* UPDATE SLIDER */
-/* ===================================== */
-
-function updateOffersSlider(){
-
-offersCarousel.style.transform =
-`translateX(-${currentOfferSlide * 100}%)`;
-
-}
-
-/* ===================================== */
-/* NEXT */
-/* ===================================== */
-
-function nextOffers(){
-
-const totalSlides =
-Math.ceil(products.length / 2);
-
-if(currentOfferSlide < totalSlides - 1){
-
-currentOfferSlide++;
-
-}else{
-
-currentOfferSlide = 0;
-
-}
-
-updateOffersSlider();
-
-}
-
-/* ===================================== */
-/* PREV */
-/* ===================================== */
-
-function prevOffers(){
-
-const totalSlides =
-Math.ceil(products.length / 2);
-
-if(currentOfferSlide > 0){
-
-currentOfferSlide--;
-
-}else{
-
-currentOfferSlide = totalSlides - 1;
-
-}
-
-updateOffersSlider();
-
-}
-
-/* ===================================== */
-/* AUTO SLIDE */
-/* ===================================== */
-
-setInterval(()=>{
-
-nextOffers();
-
-},5000);
-
-/* ===================================== */
-/* CATEGORY */
-/* ===================================== */
-
-function showCategory(category){
-
-document.getElementById("productsTitle")
-.innerText = category;
-
-const filtered =
-products.filter(p=>
-p.category === category
-);
-
-renderProducts(filtered);
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
 });
 
 }
@@ -1687,15 +1517,13 @@ behavior:"smooth"
 function openProduct(id){
 
 const product =
-products.find(p=>p.id === id);
+products.find(p => p.id === id);
 
 document.getElementById("productModal")
 .classList.remove("hidden");
 
 document.getElementById("productModal")
 .classList.add("flex");
-
-/* DATA */
 
 document.getElementById("modalImage").src =
 product.image;
@@ -1709,8 +1537,6 @@ product.title;
 document.getElementById("modalPrice").innerText =
 "$" + product.price.toLocaleString();
 
-/* RESET */
-
 document.getElementById("modalQty")
 .innerText = 1;
 
@@ -1719,14 +1545,16 @@ document.getElementById("modalQty")
 const combosContainer =
 document.getElementById("productCombos");
 
+if(combosContainer){
+
 const related =
 products
-.filter(p=>p.id !== product.id)
+.filter(p => p.id !== product.id)
 .slice(0,3);
 
 combosContainer.innerHTML = "";
 
-related.forEach(item=>{
+related.forEach(item => {
 
 combosContainer.innerHTML += `
 
@@ -1739,15 +1567,11 @@ class="w-full h-40 object-cover"
 
 <div class="p-4">
 
-<div class="text-xs uppercase text-blue-700 font-black mb-2">
-Combina con
-</div>
-
-<h4 class="font-black text-lg mb-3 min-h-[55px]">
+<h4 class="font-black text-lg mb-3">
 ${item.title}
 </h4>
 
-<div class="text-2xl font-black text-blue-700 mb-4">
+<div class="text-blue-700 font-black text-xl mb-4">
 $${item.price.toLocaleString()}
 </div>
 
@@ -1766,7 +1590,9 @@ Ver producto
 
 });
 
-/* BTN */
+}
+
+/* ADD TO CART */
 
 document.getElementById("modalAddBtn")
 .onclick = () => {
@@ -1780,8 +1606,6 @@ document.getElementById("modalQty")
 addToCart(product.id,qty);
 
 closeProduct();
-
-openCart();
 
 };
 
@@ -1832,16 +1656,16 @@ qty.innerText = value - 1;
 }
 
 /* ===================================== */
-/* CART */
+/* ADD TO CART */
 /* ===================================== */
 
 function addToCart(id,qty = 1){
 
 const product =
-products.find(p=>p.id === id);
+products.find(p => p.id === id);
 
 const existing =
-cart.find(item=>item.id === id);
+cart.find(item => item.id === id);
 
 if(existing){
 
@@ -1851,7 +1675,7 @@ existing.qty += qty;
 
 cart.push({
 ...product,
-qty
+qty:qty
 });
 
 }
@@ -1874,7 +1698,7 @@ cartItems.innerHTML = "";
 let total = 0;
 let count = 0;
 
-cart.forEach(item=>{
+cart.forEach(item => {
 
 total += item.price * item.qty;
 count += item.qty;
@@ -1887,16 +1711,16 @@ cartItems.innerHTML += `
 
 <img
 src="${item.image}"
-class="w-24 h-24 object-cover rounded-2xl"
+class="w-20 h-20 object-cover rounded-2xl"
 >
 
 <div class="flex-1">
 
-<h3 class="font-black text-lg">
+<h3 class="font-black text-base">
 ${item.title}
 </h3>
 
-<div class="text-blue-700 font-black text-2xl my-3">
+<div class="text-blue-700 font-black text-xl my-2">
 $${item.price.toLocaleString()}
 </div>
 
@@ -1904,7 +1728,7 @@ $${item.price.toLocaleString()}
 
 <button
 onclick="changeQty(${item.id},-1)"
-class="w-9 h-9 rounded-full bg-red-500 text-white font-black"
+class="w-8 h-8 rounded-full bg-red-500 text-white font-black"
 >
 -
 </button>
@@ -1915,7 +1739,7 @@ ${item.qty}
 
 <button
 onclick="changeQty(${item.id},1)"
-class="w-9 h-9 rounded-full bg-green-500 text-white font-black"
+class="w-8 h-8 rounded-full bg-green-500 text-white font-black"
 >
 +
 </button>
@@ -1948,7 +1772,7 @@ document.getElementById("cartCount")
 function changeQty(id,amount){
 
 const item =
-cart.find(i=>i.id===id);
+cart.find(i => i.id === id);
 
 if(!item) return;
 
@@ -1957,46 +1781,11 @@ item.qty += amount;
 if(item.qty <= 0){
 
 cart =
-cart.filter(i=>i.id !== id);
+cart.filter(i => i.id !== id);
 
 }
 
 updateCart();
-
-}
-
-/* ===================================== */
-/* CART SIDEBAR */
-/* ===================================== */
-
-function openCart(){
-
-document.getElementById("cartSidebar")
-.style.right = "0px";
-
-}
-
-function closeCart(){
-
-document.getElementById("cartSidebar")
-.style.right = "-500px";
-
-}
-
-function toggleCart(){
-
-const cartSidebar =
-document.getElementById("cartSidebar");
-
-if(cartSidebar.style.right === "0px"){
-
-closeCart();
-
-}else{
-
-openCart();
-
-}
 
 }
 
@@ -2026,7 +1815,7 @@ return;
 }
 
 const filtered =
-products.filter(product=>
+products.filter(product =>
 
 product.title
 .toLowerCase()
@@ -2042,33 +1831,41 @@ product.category
 
 renderProducts(filtered);
 
-suggestions.innerHTML = "";
+});
 
-filtered.forEach(product=>{
+/* ===================================== */
+/* OFFERS */
+/* ===================================== */
 
-suggestions.innerHTML += `
+function renderOffers(){
 
-<div
-class="flex items-center gap-4 p-4 hover:bg-gray-100 cursor-pointer border-b"
-onclick="openProduct(${product.id})"
->
+offersCarousel.innerHTML = "";
+
+products.forEach(product=>{
+
+offersCarousel.innerHTML += `
+
+<div class="min-w-[350px] bg-gray-100 rounded-[35px] overflow-hidden p-4">
 
 <img
 src="${product.image}"
-class="w-16 h-16 rounded-2xl object-cover"
+class="h-64 w-full object-cover rounded-3xl mb-4"
 >
 
-<div>
-
-<div class="font-black">
+<h3 class="font-black text-2xl mb-4">
 ${product.title}
-</div>
+</h3>
 
-<div class="text-blue-700 font-bold">
+<div class="text-blue-700 text-4xl font-black mb-5">
 $${product.price.toLocaleString()}
 </div>
 
-</div>
+<button
+onclick="openProduct(${product.id})"
+class="btn-primary w-full py-4 rounded-2xl font-black"
+>
+Ver producto
+</button>
 
 </div>
 
@@ -2076,9 +1873,7 @@ $${product.price.toLocaleString()}
 
 });
 
-suggestions.classList.remove("hidden");
-
-});
+}
 
 /* ===================================== */
 /* NAV */
@@ -2113,8 +1908,11 @@ document.getElementById("productsTitle")
 
 renderProducts(products);
 renderOffers();
-renderCombos();
+updateCart();
 
 </script>
-</body> 
+```
+
+
+</body>
 </html>
