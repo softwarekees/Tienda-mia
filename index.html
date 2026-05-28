@@ -1,564 +1,1766 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel ="icon" href="../../Pagina manu/favicon.ico.png">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KEES SOFTWARE</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="../../Pagina manu/favicon.ico.png" type="image/x-icon">
 
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #f3f4f6;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    .sidebar-scroll::-webkit-scrollbar {
-      width: 6px;
-    }
+<title>Kees Software</title>
 
-    .sidebar-scroll::-webkit-scrollbar-thumb {
-      background: #d1d5db;
-      border-radius: 20px;
-    }
+<script src="https://cdn.tailwindcss.com"></script>
 
-    .product-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    .gradient-header {
-      background: linear-gradient(to right, #03143b, #08245d);
-    }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 
-    .banner-gradient {
-      background: linear-gradient(to right, #06204e, #04142e);
-    }
-  </style>
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:#f4f6fb;
+overflow-x:hidden;
+color:#111827;
+}
+
+/* CONTAINER */
+
+.container-kees{
+width:100%;
+max-width:1700px;
+margin:auto;
+padding-left:20px;
+padding-right:20px;
+}
+
+/* HEADER */
+
+.gradient-header{
+background:linear-gradient(to right,#03143b,#08245d);
+}
+
+/* HERO */
+
+.hero-overlay{
+background:linear-gradient(to right,#04142ef5,#04142ea8,transparent);
+}
+
+/* BUTTONS */
+
+.btn-primary{
+background:#0b3d91;
+color:white;
+transition:.25s;
+}
+
+.btn-primary:hover{
+background:#082e6b;
+}
+
+.btn-yellow{
+background:#ffd400;
+transition:.25s;
+}
+
+.btn-yellow:hover{
+background:#ffe45d;
+}
+
+/* PRODUCT */
+
+.product-card{
+transition:.25s;
+}
+
+.product-card:hover{
+transform:translateY(-6px);
+box-shadow:0 15px 35px rgba(0,0,0,.10);
+}
+
+/* SCROLL */
+
+::-webkit-scrollbar{
+width:8px;
+height:8px;
+}
+
+::-webkit-scrollbar-thumb{
+background:#cfd5df;
+border-radius:20px;
+}
+
+/* SIDEBAR */
+
+.sidebar-box{
+background:white;
+border:1px solid #e5e7eb;
+}
+
+/* COMBOS */
+
+.combo-dot{
+width:12px;
+height:12px;
+border-radius:100%;
+background:#d1d5db;
+transition:.25s;
+}
+
+.combo-dot.active{
+background:#0b3d91;
+transform:scale(1.15);
+}
+
+/* MOBILE */
+
+@media(max-width:1200px){
+
+main{
+flex-direction:column;
+}
+
+.sidebar{
+width:100% !important;
+position:relative !important;
+top:0 !important;
+}
+
+.products-grid{
+grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+}
+
+.hero-title{
+font-size:55px !important;
+}
+
+}
+
+@media(max-width:700px){
+
+.products-grid{
+grid-template-columns:1fr !important;
+}
+
+.combo-grid{
+grid-template-columns:1fr !important;
+}
+
+.hero-title{
+font-size:38px !important;
+line-height:1.1;
+}
+
+.search-hide{
+display:none;
+}
+
+}
+
+
+/* ========================= */
+/* REEMPLAZA EL ZOOM */
+/* ========================= */
+
+html{
+zoom:90%;
+}
+
+@media(max-width:1600px){
+
+html{
+zoom:82%;
+}
+
+}
+
+@media(max-width:1200px){
+
+html{
+zoom:100%;
+}
+
+}
+
+</style>
+
 </head>
+
 <body>
 
-  <!-- HEADER -->
-  <header class="gradient-header text-white shadow-lg sticky top-0 z-50">
-    <div class="max-w-[1700px] mx-auto px-6 py-4 flex items-center gap-6">
-
-      <!-- LOGO -->
-      <div class="flex items-center gap-3 min-w-fit">
-        <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-yellow-400 bg-white">
-          <img src="../../Pagina manu/favicon.ico.png" alt="KEES SOFTWARE" class="w-full h-full object-cover">
-        </div>
-
-        <div>
-          <h1 class="text-2xl font-black leading-none">
-            KEES
-          </h1>
-          <span class="text-yellow-400 font-bold text-xl italic">
-            Software
-          </span>
-        </div>
-      </div>
-
-      <!-- SEARCH -->
-      <div class="flex-1 max-w-3xl mx-auto">
-        <div class="bg-white rounded-full overflow-hidden flex items-center shadow-lg">
-
-          <input
-            type="text"
-            placeholder="Buscar auriculares, mouse, joystick, cables..."
-            class="w-full px-6 py-4 outline-none text-gray-700"
-          >
-
-          <button class="bg-yellow-400 hover:bg-yellow-300 transition px-6 py-4 text-black font-bold text-xl">
-            🔍
-          </button>
-
-        </div>
-      </div>
-
-      <!-- LOGIN -->
-      <button class="flex items-center gap-2 font-semibold hover:text-yellow-300 transition min-w-fit">
-        👤 Iniciar sesión
-      </button>
-
-    </div>
-  </header>
-
-  <!-- MAIN -->
-  <main class="max-w-[1700px] mx-auto p-4 flex gap-5">
-
-    <!-- SIDEBAR -->
-    <aside class="w-[320px] bg-white rounded-xl shadow-sm border border-gray-200 p-5 h-fit sticky top-28 sidebar-scroll overflow-y-auto max-h-[85vh]">
-
-      <!-- OFERTAS -->
-      <div class="mb-8">
-        <button class="flex items-center gap-3 text-red-500 font-bold text-lg hover:text-red-600 transition">
-          🏷️ Ofertas
-        </button>
-      </div>
-
-      <!-- PRODUCTOS -->
-      <div>
-
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="font-black text-xl text-gray-800">
-            Productos
-          </h2>
-
-          <span>›</span>
-        </div>
-
-        <!-- CATEGORY -->
-        <div class="mb-6">
-          <h3 class="font-bold text-gray-800 mb-3">
-            🎧 Auriculares
-          </h3>
-
-          <div class="space-y-2 pl-4 text-gray-600 text-sm">
-            <button class="block hover:text-blue-700 transition">
-              Auriculares Bluetooth
-            </button>
-
-            <button class="block hover:text-blue-700 transition">
-              Auriculares con cable
-            </button>
-
-            <button class="block hover:text-blue-700 transition">
-              Auriculares gamer
-            </button>
-
-            <button class="block hover:text-blue-700 transition">
-              Manos libres
-            </button>
-          </div>
-        </div>
-
-        <!-- CATEGORY -->
-        <div class="mb-6">
-          <h3 class="font-bold text-gray-800 mb-3">
-            🖱️ Periféricos
-          </h3>
-
-          <div class="space-y-2 pl-4 text-gray-600 text-sm">
-            <button class="block hover:text-blue-700 transition">
-              Mouse
-            </button>
-
-            <button class="block hover:text-blue-700 transition">
-              Teclados
-            </button>
-
-            <button class="block hover:text-blue-700 transition">
-              Mousepad
-            </button>
-          </div>
-        </div>
-
-        <!-- CATEGORY -->
-        <div class="mb-6">
-          <h3 class="font-bold text-gray-800 mb-3">
-            🎮 Gaming
-          </h3>
-
-          <div class="space-y-2 pl-4 text-gray-600 text-sm">
-            <button class="block hover:text-blue-700 transition">
-              Joystick PS3
-            </button>
-
-            <button class="block hover:text-blue-700 transition">
-              Accesorios gamer
-            </button>
-          </div>
-        </div>
-
-        <!-- CATEGORY -->
-        <div class="mb-6">
-          <h3 class="font-bold text-gray-800 mb-3">
-            🔌 Cables y conectividad
-          </h3>
-
-          <div class="space-y-2 pl-4 text-gray-600 text-sm">
-            <button class="block hover:text-blue-700 transition">
-              HDMI
-            </button>
-
-            <button class="block hover:text-blue-700 transition">
-              USB Tipo-C
-            </button>
-
-            <button class="block hover:text-blue-700 transition">
-              Adaptadores Bluetooth
-            </button>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- DELIVERY -->
-      <div class="border-t pt-6 mt-8">
-        <button class="flex items-center gap-3 font-bold text-gray-800 hover:text-blue-700 transition">
-          🚚 Envíos a todo el país
-        </button>
-      </div>
-
-    </aside>
-
-    <!-- CONTENT -->
-    <section class="flex-1">
-
-      <!-- HERO BANNER -->
-      <div class="banner-gradient rounded-2xl overflow-hidden p-10 text-white relative mb-8 shadow-lg">
-
-        <div class="absolute inset-0 opacity-20">
-          <div class="absolute right-0 top-0 w-96 h-96 bg-cyan-400 blur-3xl"></div>
-        </div>
-
-        <div class="relative z-10 max-w-2xl">
-          <h2 class="text-5xl font-black mb-4 leading-tight">
-            Ofertas tecnológicas
-            imperdibles
-          </h2>
-
-          <p class="text-xl text-gray-200 mb-8">
-            Encontrá auriculares, gaming, cables y accesorios premium.
-          </p>
-
-          <button class="bg-yellow-400 hover:bg-yellow-300 transition text-black font-black px-8 py-4 rounded-xl text-lg shadow-lg">
-            Ver ofertas
-          </button>
-        </div>
-
-      </div>
-
-      <!-- DESTACADOS -->
-      <div class="mb-8">
-        <h3 class="text-4xl font-black text-gray-800 mb-6">
-          Productos destacados
-        </h3>
-
-        <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-5">
-
-          <!-- PRODUCT -->
-          <div class="product-card bg-white rounded-xl border border-gray-200 overflow-hidden transition duration-300">
-
-            <div class="h-52 bg-gray-100 flex items-center justify-center">
-              <div class="text-center">
-                <div class="text-5xl opacity-40 mb-3">🖼️</div>
-                <p class="text-gray-400 text-sm">Agregar imagen</p>
-              </div>
-            </div>
-
-            <div class="p-4 text-center">
-              <h4 class="font-bold text-gray-800 min-h-[60px] text-sm mb-3">
-                Auricular manos libres con cable River
-              </h4>
-
-              <div class="text-2xl font-black text-gray-900 mb-4">
-                $4.100
-              </div>
-
-              <button class="w-full bg-blue-700 hover:bg-blue-800 transition text-white font-bold py-3 rounded-lg">
-                Agregar
-              </button>
-            </div>
-          </div>
-
-          <!-- PRODUCT -->
-          <div class="product-card bg-white rounded-xl border border-gray-200 overflow-hidden transition duration-300">
-
-            <div class="h-52 bg-gray-100 flex items-center justify-center">
-              <div class="text-center">
-                <div class="text-5xl opacity-40 mb-3">🖼️</div>
-                <p class="text-gray-400 text-sm">Agregar imagen</p>
-              </div>
-            </div>
-
-            <div class="p-4 text-center">
-              <h4 class="font-bold text-gray-800 min-h-[60px] text-sm mb-3">
-                Auricular A6S True inalámbrico Bluetooth
-              </h4>
-
-              <div class="text-2xl font-black text-gray-900 mb-4">
-                $7.180
-              </div>
-
-              <button class="w-full bg-blue-700 hover:bg-blue-800 transition text-white font-bold py-3 rounded-lg">
-                Agregar
-              </button>
-            </div>
-          </div>
-
-          <!-- PRODUCT -->
-          <div class="product-card bg-white rounded-xl border border-gray-200 overflow-hidden transition duration-300">
-
-            <div class="h-52 bg-gray-100 flex items-center justify-center">
-              <div class="text-center">
-                <div class="text-5xl opacity-40 mb-3">🖼️</div>
-                <p class="text-gray-400 text-sm">Agregar imagen</p>
-              </div>
-            </div>
-
-            <div class="p-4 text-center">
-              <h4 class="font-bold text-gray-800 min-h-[60px] text-sm mb-3">
-                Joystick PS3 SONY calidad premium
-              </h4>
-
-              <div class="text-2xl font-black text-gray-900 mb-4">
-                $12.360
-              </div>
-
-              <button class="w-full bg-blue-700 hover:bg-blue-800 transition text-white font-bold py-3 rounded-lg">
-                Agregar
-              </button>
-            </div>
-          </div>
-
-          <!-- PRODUCT -->
-          <div class="product-card bg-white rounded-xl border border-gray-200 overflow-hidden transition duration-300">
-
-            <div class="h-52 bg-gray-100 flex items-center justify-center">
-              <div class="text-center">
-                <div class="text-5xl opacity-40 mb-3">🖼️</div>
-                <p class="text-gray-400 text-sm">Agregar imagen</p>
-              </div>
-            </div>
-
-            <div class="p-4 text-center">
-              <h4 class="font-bold text-gray-800 min-h-[60px] text-sm mb-3">
-                Mouse inalámbrico GTC MIG-117
-              </h4>
-
-              <div class="text-2xl font-black text-gray-900 mb-4">
-                $7.620
-              </div>
-
-              <button class="w-full bg-blue-700 hover:bg-blue-800 transition text-white font-bold py-3 rounded-lg">
-                Agregar
-              </button>
-            </div>
-          </div>
-
-          <!-- PRODUCT -->
-          <div class="product-card bg-white rounded-xl border border-gray-200 overflow-hidden transition duration-300">
-
-            <div class="h-52 bg-gray-100 flex items-center justify-center">
-              <div class="text-center">
-                <div class="text-5xl opacity-40 mb-3">🖼️</div>
-                <p class="text-gray-400 text-sm">Agregar imagen</p>
-              </div>
-            </div>
-
-            <div class="p-4 text-center">
-              <h4 class="font-bold text-gray-800 min-h-[60px] text-sm mb-3">
-                Cable HDMI 1.5m Full HD 4K
-              </h4>
-
-              <div class="text-2xl font-black text-gray-900 mb-4">
-                $4.843
-              </div>
-
-              <button class="w-full bg-blue-700 hover:bg-blue-800 transition text-white font-bold py-3 rounded-lg">
-                Agregar
-              </button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- GRID -->
-      <div>
-        <h3 class="text-4xl font-black text-gray-800 mb-6">
-          Auriculares
-        </h3>
-
-        <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-5">
-
-          <div class="product-card bg-white rounded-xl border border-gray-200 overflow-hidden transition duration-300">
-            <div class="h-52 bg-gray-100 flex items-center justify-center">
-              <div class="text-center">
-                <div class="text-5xl opacity-40 mb-3">🖼️</div>
-                <p class="text-gray-400 text-sm">Agregar imagen</p>
-              </div>
-            </div>
-
-            <div class="p-4 text-center">
-              <h4 class="font-bold text-gray-800 min-h-[60px] text-sm mb-3">
-                Auricular Bluetooth P47
-              </h4>
-
-              <div class="text-2xl font-black text-gray-900 mb-4">
-                $6.740
-              </div>
-
-              <button class="w-full bg-blue-700 hover:bg-blue-800 transition text-white font-bold py-3 rounded-lg">
-                Agregar
-              </button>
-            </div>
-          </div>
-
-          <div class="product-card bg-white rounded-xl border border-gray-200 overflow-hidden transition duration-300">
-            <div class="h-52 bg-gray-100 flex items-center justify-center">
-              <div class="text-center">
-                <div class="text-5xl opacity-40 mb-3">🖼️</div>
-                <p class="text-gray-400 text-sm">Agregar imagen</p>
-              </div>
-            </div>
-
-            <div class="p-4 text-center">
-              <h4 class="font-bold text-gray-800 min-h-[60px] text-sm mb-3">
-                Auricular IN EAR manos libres TIME
-              </h4>
-
-              <div class="text-2xl font-black text-gray-900 mb-4">
-                $4.408
-              </div>
-
-              <button class="w-full bg-blue-700 hover:bg-blue-800 transition text-white font-bold py-3 rounded-lg">
-                Agregar
-              </button>
-            </div>
-          </div>
-
-          <div class="product-card bg-white rounded-xl border border-gray-200 overflow-hidden transition duration-300">
-            <div class="h-52 bg-gray-100 flex items-center justify-center">
-              <div class="text-center">
-                <div class="text-5xl opacity-40 mb-3">🖼️</div>
-                <p class="text-gray-400 text-sm">Agregar imagen</p>
-              </div>
-            </div>
-
-            <div class="p-4 text-center">
-              <h4 class="font-bold text-gray-800 min-h-[60px] text-sm mb-3">
-                Auricular SAMSUNG premium
-              </h4>
-
-              <div class="text-2xl font-black text-gray-900 mb-4">
-                $5.079
-              </div>
-
-              <button class="w-full bg-blue-700 hover:bg-blue-800 transition text-white font-bold py-3 rounded-lg">
-                Agregar
-              </button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="mt-10 gradient-header text-white">
-
-    <div class="max-w-[1700px] mx-auto px-8 py-16 grid md:grid-cols-4 gap-12">
-
-      <div>
-        <div class="flex items-center gap-3 mb-6">
-          <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-yellow-400 bg-white">
-            <img src="../../Pagina manu/favicon.ico.png" alt="KEES SOFTWARE" class="w-full h-full object-cover">
-          </div>
-
-          <div>
-            <h2 class="text-2xl font-black leading-none">
-              KEES
-            </h2>
-            <span class="text-yellow-400 font-bold text-xl italic">
-              Software
-            </span>
-          </div>
-        </div>
-
-        <p class="text-gray-300 leading-relaxed mb-6">
-          Tu tienda tecnológica de confianza.
-          Siempre cerca tuyo.
-        </p>
-
-        <div class="flex gap-4 text-2xl">
-          <button>📘</button>
-          <button>📸</button>
-          <button>💬</button>
-        </div>
-      </div>
-
-      <div>
-        <h3 class="text-2xl font-bold mb-6">
-          ¿Quiénes somos?
-        </h3>
-
-        <p class="text-gray-300 leading-relaxed">
-          Somos una tienda tecnológica enfocada en accesorios gamer, auriculares, cables y periféricos con los mejores precios.
-        </p>
-      </div>
-
-      <div>
-        <h3 class="text-2xl font-bold mb-6">
-          Atención al cliente
-        </h3>
-
-        <div class="space-y-4 text-gray-300">
-          <p>
-            Email: softwarekees@gmail.com
-          </p>
-
-          <p>
-            WhatsApp: 2926405465
-          </p>
-
-          <p>
-            Lunes a Sábado de 8 a 20 hs
-          </p>
-        </div>
-      </div>
-
-      <div>
-        <h3 class="text-2xl font-bold mb-6">
-          Categorías
-        </h3>
-
-        <div class="space-y-3 text-gray-300">
-          <button class="block hover:text-yellow-400 transition">
-            Auriculares
-          </button>
-
-          <button class="block hover:text-yellow-400 transition">
-            Gaming
-          </button>
-
-          <button class="block hover:text-yellow-400 transition">
-            Mouse
-          </button>
-
-          <button class="block hover:text-yellow-400 transition">
-            HDMI
-          </button>
-
-          <button class="block hover:text-yellow-400 transition">
-            USB Tipo-C
-          </button>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="border-t border-white/10 text-center py-6 text-gray-400">
-      © 2025 KEES SOFTWARE - Todos los derechos reservados.
-    </div>
-
-  </footer>
-
-  <!-- FLOATING WHATSAPP -->
-  <a
-    href="https://wa.me/5492926405465"
-    target="_blank"
-    class="fixed bottom-6 right-6 w-16 h-16 rounded-full bg-green-500 hover:bg-green-400 transition flex items-center justify-center text-3xl shadow-2xl hover:scale-110 z-50"
-  >
-    💬
-  </a>
+<!-- HEADER -->
+
+<header class="gradient-header fixed top-0 left-0 w-full z-50 shadow-2xl">
+
+<div class="container-kees py-4 flex items-center gap-5">
+
+<!-- LOGO -->
+
+<div class="flex items-center gap-3 min-w-fit">
+
+<div class="w-14 h-14 rounded-full overflow-hidden bg-white border-2 border-yellow-400">
+
+<img
+src="../../Pagina manu/favicon.ico.png"
+class="w-full h-full object-cover"
+>
+
+</div>
+
+<div>
+
+<h1 class="text-2xl text-white font-black leading-none">
+KEES
+</h1>
+
+<span class="text-yellow-400 text-xl italic font-black">
+Software
+</span>
+
+</div>
+
+</div>
+
+<!-- SEARCH -->
+
+<div class="flex-1 relative">
+
+<div class="bg-white rounded-full overflow-hidden flex items-center shadow-xl">
+
+<input
+id="searchInput"
+type="text"
+placeholder="Buscar auriculares, mouse, joystick..."
+class="w-full px-7 py-4 outline-none text-gray-700 text-lg"
+>
+
+<button class="btn-yellow px-7 py-4 font-black text-black">
+🔍
+</button>
+
+</div>
+
+<div
+id="suggestions"
+class="absolute top-full left-0 w-full bg-white rounded-3xl shadow-2xl mt-3 overflow-hidden hidden z-50"
+>
+</div>
+
+</div>
+
+<!-- CART -->
+
+<button
+onclick="toggleCart()"
+class="relative text-white text-3xl"
+>
+
+🛒
+
+<span
+id="cartCount"
+class="absolute -top-2 -right-2 bg-yellow-400 text-black text-xs font-black rounded-full w-6 h-6 flex items-center justify-center"
+>
+0
+</span>
+
+</button>
+
+<!-- LOGIN -->
+
+<button
+onclick="openLogin()"
+class="bg-white/10 hover:bg-white/20 transition text-white font-bold px-6 py-3 rounded-2xl"
+>
+👤 Iniciar sesión
+</button>
+
+</div>
+
+</header>
+
+<!-- MAIN -->
+
+<main class="container-kees pt-32 flex gap-6">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar sidebar-box w-[340px] rounded-[35px] shadow-lg p-7 h-fit sticky top-28">
+
+<h2 class="text-4xl font-black mb-8">
+Menú
+</h2>
+
+<div class="space-y-3 mb-8">
+
+<button
+onclick="goHome()"
+class="w-full flex items-center gap-3 bg-blue-700 hover:bg-blue-800 text-white font-black px-5 py-4 rounded-2xl transition text-left text-xl"
+>
+🏠 Inicio
+</button>
+
+<button
+onclick="goOffers()"
+class="w-full flex items-center gap-3 bg-yellow-400 hover:bg-yellow-300 text-black font-black px-5 py-4 rounded-2xl transition text-left text-xl"
+>
+🔥 Ofertas
+</button>
+
+</div>
+
+<h3 class="text-3xl font-black mb-5">
+Categorías
+</h3>
+
+<!-- AURICULARES -->
+
+<details open class="border-b py-4">
+
+<summary class="font-black text-xl cursor-pointer flex justify-between">
+🎧 Auriculares
+<span>⌄</span>
+</summary>
+
+<div class="mt-4 space-y-3 pl-3">
+
+<button
+onclick="showCategory('Auriculares')"
+class="block text-gray-600 hover:text-blue-700"
+>
+Bluetooth
+</button>
+
+<button
+onclick="showCategory('Auriculares')"
+class="block text-gray-600 hover:text-blue-700"
+>
+Con cable
+</button>
+
+</div>
+
+</details>
+
+<!-- GAMING -->
+
+<details class="border-b py-4">
+
+<summary class="font-black text-xl cursor-pointer flex justify-between">
+🎮 Gaming
+<span>⌄</span>
+</summary>
+
+<div class="mt-4 space-y-3 pl-3">
+
+<button
+onclick="showCategory('Gaming')"
+class="block text-gray-600 hover:text-blue-700"
+>
+Joystick
+</button>
+
+</div>
+
+</details>
+
+<!-- PERIFERICOS -->
+
+<details class="border-b py-4">
+
+<summary class="font-black text-xl cursor-pointer flex justify-between">
+🖱️ Periféricos
+<span>⌄</span>
+</summary>
+
+<div class="mt-4 space-y-3 pl-3">
+
+<button
+onclick="showCategory('Perifericos')"
+class="block text-gray-600 hover:text-blue-700"
+>
+Mouse
+</button>
+
+<button
+onclick="showCategory('Perifericos')"
+class="block text-gray-600 hover:text-blue-700"
+>
+Bluetooth USB
+</button>
+
+</div>
+
+</details>
+
+<!-- CABLES -->
+
+<details class="border-b py-4">
+
+<summary class="font-black text-xl cursor-pointer flex justify-between">
+🔌 Cables
+<span>⌄</span>
+</summary>
+
+<div class="mt-4 space-y-3 pl-3">
+
+<button
+onclick="showCategory('Cables')"
+class="block text-gray-600 hover:text-blue-700"
+>
+HDMI
+</button>
+
+<button
+onclick="showCategory('Cables')"
+class="block text-gray-600 hover:text-blue-700"
+>
+USB-C
+</button>
+
+</div>
+
+</details>
+
+<div class="bg-gray-100 rounded-3xl p-6 mt-8">
+
+<h3 class="font-black text-3xl mb-3">
+🚚 Envíos
+</h3>
+
+<p class="text-gray-600 text-lg">
+Envíos rápidos a todo el país.
+</p>
+
+</div>
+
+</aside>
+
+<!-- CONTENT -->
+
+<section class="flex-1 min-w-0">
+
+<!-- HERO -->
+
+<div class="relative rounded-[35px] overflow-hidden h-[430px] mb-8 shadow-2xl">
+
+<img
+src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1600&auto=format&fit=crop"
+class="absolute inset-0 w-full h-full object-cover"
+>
+
+<div class="absolute inset-0 hero-overlay"></div>
+
+<div class="relative z-10 h-full flex items-center px-14">
+
+<div class="max-w-2xl text-white">
+
+<div class="bg-yellow-400 text-black font-black inline-block px-6 py-3 rounded-full mb-6">
+OFERTAS EXCLUSIVAS
+</div>
+
+<h2 class="hero-title text-7xl font-black leading-tight mb-6">
+Tecnología premium para vos
+</h2>
+
+<p class="text-2xl text-gray-200 mb-8">
+Auriculares, gaming, cables y periféricos.
+</p>
+
+<button
+onclick="goOffers()"
+class="btn-yellow px-9 py-4 rounded-2xl text-black font-black text-xl"
+>
+Ver ofertas
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- TOP -->
+
+<div id="topSections">
+
+<!-- OFERTAS -->
+
+<section
+id="offersSection"
+class="bg-white rounded-[35px] p-7 shadow-lg mb-8"
+>
+
+<div class="flex flex-col items-center mb-8">
+
+<h3 class="text-4xl font-black text-gray-800 mb-5">
+🔥 Ofertas especiales
+</h3>
+
+<div class="flex gap-3">
+
+<button
+onclick="prevOffers()"
+class="w-12 h-12 rounded-full bg-gray-200 hover:bg-gray-300 text-xl"
+>
+←
+</button>
+
+<button
+onclick="nextOffers()"
+class="w-12 h-12 rounded-full bg-gray-200 hover:bg-gray-300 text-xl"
+>
+→
+</button>
+
+</div>
+
+</div>
+
+<div
+id="offersCarousel"
+class="flex gap-5 overflow-x-hidden pb-2"
+>
+</div>
+
+</section>
+
+<!-- COMBOS -->
+
+<section class="bg-white rounded-[35px] p-7 shadow-lg mb-10">
+
+<div class="flex flex-col items-center mb-8">
+
+<h3 class="text-4xl font-black text-gray-800 mb-4">
+🎁 Combos
+</h3>
+
+<div id="comboDots" class="flex gap-2 mb-5"></div>
+
+<div class="flex gap-3">
+
+<button
+onclick="prevCombo()"
+class="w-12 h-12 rounded-full bg-gray-200 hover:bg-gray-300 text-xl"
+>
+←
+</button>
+
+<button
+onclick="nextCombo()"
+class="w-12 h-12 rounded-full bg-gray-200 hover:bg-gray-300 text-xl"
+>
+→
+</button>
+
+</div>
+
+</div>
+
+<div class="overflow-hidden">
+
+<div
+id="comboTrack"
+class="flex transition-all duration-500"
+>
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+<!-- PRODUCTS -->
+
+<div>
+
+<div class="flex items-center justify-between mb-7">
+
+<h3
+id="productsTitle"
+class="text-4xl font-black text-gray-800"
+>
+Productos
+</h3>
+
+<div class="text-gray-500 font-semibold">
++120 productos
+</div>
+
+</div>
+
+<div
+id="productsGrid"
+class="products-grid grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6"
+>
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer class="mt-16 bg-[#03143b] text-white">
+
+<div class="container-kees py-16 grid grid-cols-1 md:grid-cols-4 gap-10">
+
+<div>
+
+<h2 class="text-4xl font-black mb-5">
+KEES SOFTWARE
+</h2>
+
+<p class="text-gray-300 leading-relaxed text-lg">
+Tecnología premium, periféricos, auriculares y accesorios con envíos a todo el país.
+</p>
+
+</div>
+
+<div>
+
+<h3 class="text-2xl font-black mb-5">
+Categorías
+</h3>
+
+<div class="space-y-3 text-gray-300 text-lg">
+
+<div>Auriculares</div>
+<div>Gaming</div>
+<div>Periféricos</div>
+<div>Cables</div>
+
+</div>
+
+</div>
+
+<div>
+
+<h3 class="text-2xl font-black mb-5">
+Información
+</h3>
+
+<div class="space-y-3 text-gray-300 text-lg">
+
+<div>Envíos</div>
+<div>Garantía</div>
+<div>Medios de pago</div>
+<div>Soporte</div>
+
+</div>
+
+</div>
+
+<div>
+
+<h3 class="text-2xl font-black mb-5">
+Contacto
+</h3>
+
+<div class="space-y-3 text-gray-300 text-lg">
+
+<div>📞 +54 9 2926 40-5465</div>
+<div>📍 Argentina</div>
+<div>✉️ ventas@kees.com</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="border-t border-white/10 text-center py-6 text-gray-400 text-lg">
+© 2026 KEES SOFTWARE - Todos los derechos reservados
+</div>
+
+</footer>
+
+<!-- PRODUCT MODAL -->
+
+<!-- ========================= -->
+<!-- REEMPLAZA TODO EL MODAL -->
+<!-- ========================= -->
+
+<div
+id="productModal"
+class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50 p-6"
+>
+
+<div class="bg-white w-full max-w-[1500px] rounded-[40px] overflow-hidden relative max-h-[95vh] overflow-y-auto">
+
+<button
+onclick="closeProduct()"
+class="absolute right-6 top-6 text-4xl z-20 hover:scale-110 transition"
+>
+✕
+</button>
+
+<div class="grid grid-cols-1 xl:grid-cols-2">
+
+<!-- IMAGE -->
+
+<div class="bg-gray-100 flex items-center justify-center p-10">
+
+<img
+id="modalImage"
+src=""
+class="w-full max-h-[760px] object-contain rounded-[30px]"
+>
+
+</div>
+
+<!-- INFO -->
+
+<div class="p-10 flex flex-col justify-center">
+
+<div
+id="modalCategory"
+class="text-blue-700 font-black uppercase text-sm mb-4"
+>
+Categoría
+</div>
+
+<h2
+id="modalTitle"
+class="text-5xl font-black text-gray-800 leading-tight mb-6"
+>
+Producto
+</h2>
+
+<div
+id="modalPrice"
+class="text-6xl font-black text-blue-700 mb-7"
+>
+$0
+</div>
+
+<p class="text-gray-600 text-xl leading-relaxed mb-8">
+Producto premium con garantía oficial.
+Ideal para gaming, oficina y uso profesional.
+Envíos rápidos a todo el país.
+</p>
+
+<!-- BENEFITS -->
+
+<div class="grid grid-cols-2 gap-4 mb-8">
+
+<div class="bg-gray-100 rounded-3xl p-5">
+
+<div class="text-gray-500 mb-2">
+🚚 Envío
+</div>
+
+<div class="font-black text-xl">
+24/48 hs
+</div>
+
+</div>
+
+<div class="bg-gray-100 rounded-3xl p-5">
+
+<div class="text-gray-500 mb-2">
+🛡 Garantía
+</div>
+
+<div class="font-black text-xl">
+12 meses
+</div>
+
+</div>
+
+</div>
+
+<!-- QTY -->
+
+<div class="mb-7">
+
+<div class="font-black text-xl mb-4">
+Cantidad
+</div>
+
+<div class="flex items-center gap-4">
+
+<button
+onclick="decreaseModalQty()"
+class="w-14 h-14 rounded-2xl bg-red-500 hover:bg-red-400 text-white text-2xl font-black transition"
+>
+-
+</button>
+
+<div
+id="modalQty"
+class="w-20 h-14 rounded-2xl bg-gray-100 flex items-center justify-center text-2xl font-black"
+>
+1
+</div>
+
+<button
+onclick="increaseModalQty()"
+class="w-14 h-14 rounded-2xl bg-green-500 hover:bg-green-400 text-white text-2xl font-black transition"
+>
++
+</button>
+
+</div>
+
+</div>
+
+<!-- BTN -->
+
+<button
+id="modalAddBtn"
+class="btn-primary py-5 rounded-3xl font-black text-2xl mb-10"
+>
+Agregar al carrito
+</button>
+
+<!-- COMBOS -->
+
+<div>
+
+<div class="flex items-center justify-between mb-6">
+
+<h3 class="text-3xl font-black text-gray-800">
+🔥 Combos con este producto
+</h3>
+
+<div class="text-gray-400 font-bold">
+Recomendados
+</div>
+
+</div>
+
+<div
+id="productCombos"
+class="grid grid-cols-1 md:grid-cols-3 gap-5"
+>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CART -->
+
+<div
+id="cartSidebar"
+class="fixed top-0 right-[-500px] w-[430px] h-full bg-white shadow-2xl z-50 transition-all duration-300 p-7 overflow-y-auto"
+>
+
+<div class="flex items-center justify-between mb-7">
+
+<h2 class="text-4xl font-black">
+Carrito
+</h2>
+
+<button onclick="toggleCart()" class="text-3xl">
+✕
+</button>
+
+</div>
+
+<div id="cartItems" class="space-y-5"></div>
+
+<div class="border-t pt-7 mt-7">
+
+<div class="flex justify-between text-3xl font-black mb-6">
+
+<span>Total:</span>
+
+<span id="cartTotal">$0</span>
+
+</div>
+
+<button class="w-full bg-green-500 hover:bg-green-400 transition text-white font-black py-4 rounded-2xl text-xl">
+Finalizar compra
+</button>
+
+</div>
+
+</div>
+
+<!-- LOGIN -->
+
+<div
+id="loginModal"
+class="fixed inset-0 bg-black/60 hidden items-center justify-center z-50"
+>
+
+<div class="bg-white rounded-[35px] w-[500px] p-9 relative">
+
+<button
+onclick="closeLogin()"
+class="absolute right-5 top-5 text-3xl"
+>
+✕
+</button>
+
+<h2 class="text-5xl font-black mb-8">
+Iniciar sesión
+</h2>
+
+<input
+id="email"
+type="email"
+placeholder="Email"
+class="w-full border rounded-2xl p-5 mb-5 outline-none"
+>
+
+<input
+id="password"
+type="password"
+placeholder="Contraseña"
+class="w-full border rounded-2xl p-5 mb-7 outline-none"
+>
+
+<button
+onclick="login()"
+class="btn-primary w-full py-4 rounded-2xl font-black text-xl mb-4"
+>
+Ingresar
+</button>
+
+<button
+class="w-full bg-gray-100 hover:bg-gray-200 transition py-4 rounded-2xl font-black text-xl"
+>
+Crear cuenta
+</button>
+
+</div>
+
+</div>
+
+<!-- WHATSAPP -->
+
+<a
+href="https://wa.me/5492926405465"
+target="_blank"
+class="fixed bottom-7 right-7 w-16 h-16 rounded-full bg-green-500 hover:bg-green-400 flex items-center justify-center text-3xl shadow-2xl z-40"
+>
+💬
+</a>
+
+<script>
+
+/* PRODUCTS */
+
+const products = [
+
+{
+id:1,
+title:"Auricular manos libres River - Boca",
+price:1100,
+category:"Auriculares",
+image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+id:2,
+title:"Auricular A6S inalámbrico Bluetooth",
+price:4180,
+category:"Auriculares",
+image:"https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+id:3,
+title:"Joystick PS3 SONY",
+price:9360,
+category:"Gaming",
+image:"https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+id:4,
+title:"Cable USB Tipo-C mallado",
+price:1265,
+category:"Cables",
+image:"https://images.unsplash.com/photo-1580894908361-967195033215?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+id:5,
+title:"Auricular IBEK ER-25",
+price:1239,
+category:"Auriculares",
+image:"https://images.unsplash.com/photo-1484704849700-f032a568e944?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+id:6,
+title:"Bluetooth USB NETMAK",
+price:4180,
+category:"Perifericos",
+image:"https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+id:7,
+title:"Auricular Bluetooth P47",
+price:3740,
+category:"Auriculares",
+image:"https://images.unsplash.com/photo-1519677100203-a0e668c92439?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+id:8,
+title:"Mouse inalámbrico GTC",
+price:4620,
+category:"Perifericos",
+image:"https://images.unsplash.com/photo-1527814050087-3793815479db?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+id:9,
+title:"Cable HDMI Full HD",
+price:1843,
+category:"Cables",
+image:"https://images.unsplash.com/photo-1550009158-9ebf69173e03?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+id:10,
+title:"Cable Samsung Turbo",
+price:2860,
+category:"Cables",
+image:"https://images.unsplash.com/photo-1580894894513-541e068a3e2b?q=80&w=1200&auto=format&fit=crop"
+}
+
+];
+
+const combos = [
+
+[products[0],products[1]],
+[products[2],products[3]],
+[products[4],products[5]],
+[products[6],products[7]]
+
+];
+
+let currentCombo = 0;
+let cart = [];
+
+const productsGrid = document.getElementById("productsGrid");
+const offersCarousel = document.getElementById("offersCarousel");
+const comboTrack = document.getElementById("comboTrack");
+const comboDots = document.getElementById("comboDots");
+
+/* RENDER PRODUCTS */
+
+function renderProducts(list){
+
+productsGrid.innerHTML = "";
+
+list.forEach(product=>{
+
+productsGrid.innerHTML += `
+
+<div class="product-card bg-white rounded-[30px] overflow-hidden shadow-lg border border-gray-100">
+
+<img
+src="${product.image}"
+class="h-64 w-full object-cover"
+>
+
+<div class="p-5">
+
+<div class="text-xs font-black text-blue-700 mb-3 uppercase">
+${product.category}
+</div>
+
+<h3 class="font-black text-xl mb-3 min-h-[70px] text-gray-800">
+${product.title}
+</h3>
+
+<div class="text-3xl font-black text-blue-700 mb-5">
+$${product.price.toLocaleString()}
+</div>
+
+<button
+onclick="openProduct(${product.id})"
+class="btn-primary w-full py-4 rounded-2xl font-black text-lg"
+>
+Ver producto
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+/* OFFERS */
+
+function renderOffers(){
+
+offersCarousel.innerHTML = "";
+
+products.forEach(product=>{
+
+offersCarousel.innerHTML += `
+
+<div class="min-w-[320px] bg-gray-100 rounded-[30px] overflow-hidden shadow-lg">
+
+<img
+src="${product.image}"
+class="h-64 w-full object-cover"
+>
+
+<div class="p-5">
+
+<div class="text-blue-700 text-sm font-black uppercase mb-2">
+Oferta
+</div>
+
+<h3 class="font-black text-2xl mb-4">
+${product.title}
+</h3>
+
+<div class="text-4xl font-black text-blue-700 mb-5">
+$${product.price.toLocaleString()}
+</div>
+
+<button
+onclick="openProduct(${product.id})"
+class="btn-primary w-full py-4 rounded-2xl font-black text-lg"
+>
+Ver producto
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+/* COMBOS */
+
+function renderCombos(){
+
+comboTrack.innerHTML = "";
+comboDots.innerHTML = "";
+
+combos.forEach((combo,index)=>{
+
+comboTrack.innerHTML += `
+
+<div class="min-w-full combo-grid grid grid-cols-2 gap-6">
+
+${combo.map(product=>`
+
+<div class="bg-gray-100 rounded-[30px] overflow-hidden shadow-lg">
+
+<img
+src="${product.image}"
+class="h-72 w-full object-cover"
+>
+
+<div class="p-6">
+
+<div class="text-blue-700 text-sm font-black uppercase mb-2">
+Combo especial
+</div>
+
+<h3 class="font-black text-2xl mb-4">
+${product.title}
+</h3>
+
+<div class="text-4xl font-black text-blue-700 mb-5">
+$${product.price.toLocaleString()}
+</div>
+
+<button
+onclick="openProduct(${product.id})"
+class="btn-primary w-full py-4 rounded-2xl font-black text-lg"
+>
+Ver producto
+</button>
+
+</div>
+
+</div>
+
+`).join("")}
+
+</div>
+
+`;
+
+comboDots.innerHTML += `
+<div class="combo-dot ${index === currentCombo ? 'active' : ''}"></div>
+`;
+
+});
+
+updateCombo();
+
+}
+
+function updateCombo(){
+
+comboTrack.style.transform =
+`translateX(-${currentCombo * 100}%)`;
+
+const dots = comboDots.querySelectorAll(".combo-dot");
+
+dots.forEach((dot,index)=>{
+
+dot.classList.remove("active");
+
+if(index === currentCombo){
+
+dot.classList.add("active");
+
+}
+
+});
+
+}
+
+function nextCombo(){
+
+if(currentCombo < combos.length - 1){
+
+currentCombo++;
+
+}else{
+
+currentCombo = 0;
+
+}
+
+updateCombo();
+
+}
+
+function prevCombo(){
+
+if(currentCombo > 0){
+
+currentCombo--;
+
+}else{
+
+currentCombo = combos.length - 1;
+
+}
+
+updateCombo();
+
+}
+
+/* OFFERS SLIDER */
+
+function nextOffers(){
+
+offersCarousel.scrollBy({
+left:350,
+behavior:"smooth"
+});
+
+}
+
+function prevOffers(){
+
+offersCarousel.scrollBy({
+left:-350,
+behavior:"smooth"
+});
+
+}
+
+/* CATEGORY */
+
+function showCategory(category){
+
+document.getElementById("productsTitle")
+.innerText = category;
+
+const filtered = products.filter(p=>
+p.category === category
+);
+
+renderProducts(filtered);
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+/* PRODUCT */
+
+function openProduct(id){
+
+const product =
+products.find(p=>p.id === id);
+
+document.getElementById("productModal")
+.classList.remove("hidden");
+
+document.getElementById("productModal")
+.classList.add("flex");
+
+/* DATA */
+
+document.getElementById("modalImage").src =
+product.image;
+
+document.getElementById("modalCategory").innerText =
+product.category;
+
+document.getElementById("modalTitle").innerText =
+product.title;
+
+document.getElementById("modalPrice").innerText =
+"$" + product.price.toLocaleString();
+
+/* RESET QTY */
+
+document.getElementById("modalQty").innerText = 1;
+
+/* COMBOS */
+
+const combosContainer =
+document.getElementById("productCombos");
+
+const related =
+products
+.filter(p=>p.id !== product.id)
+.slice(0,3);
+
+combosContainer.innerHTML = "";
+
+related.forEach(item=>{
+
+combosContainer.innerHTML += `
+
+<div class="bg-gray-100 rounded-3xl overflow-hidden border border-gray-200">
+
+<img
+src="${item.image}"
+class="w-full h-40 object-cover"
+>
+
+<div class="p-4">
+
+<div class="text-xs uppercase text-blue-700 font-black mb-2">
+Combo recomendado
+</div>
+
+<h4 class="font-black text-lg mb-3 text-gray-800 min-h-[55px]">
+${item.title}
+</h4>
+
+<div class="text-2xl font-black text-blue-700 mb-4">
+$${item.price.toLocaleString()}
+</div>
+
+<button
+onclick="openProduct(${item.id})"
+class="w-full bg-white border border-gray-300 hover:bg-gray-200 transition py-3 rounded-2xl font-black"
+>
+Ver producto
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+/* BTN */
+
+document.getElementById("modalAddBtn")
+.onclick = () => {
+
+const qty =
+parseInt(
+document.getElementById("modalQty").innerText
+);
+
+addToCart(product.id,qty);
+
+closeProduct();
+
+toggleCart();
+
+};
+
+}
+
+/* CLOSE */
+
+function closeProduct(){
+
+document.getElementById("productModal")
+.classList.add("hidden");
+
+document.getElementById("productModal")
+.classList.remove("flex");
+
+}
+
+/* QTY */
+
+function increaseModalQty(){
+
+const qty =
+document.getElementById("modalQty");
+
+qty.innerText =
+parseInt(qty.innerText) + 1;
+
+}
+
+function decreaseModalQty(){
+
+const qty =
+document.getElementById("modalQty");
+
+let value =
+parseInt(qty.innerText);
+
+if(value > 1){
+
+qty.innerText = value - 1;
+
+}
+
+}
+
+/* CART */
+
+function addToCart(id,qty = 1){
+
+const product =
+products.find(p=>p.id === id);
+
+const existing =
+cart.find(item=>item.id === id);
+
+if(existing){
+
+existing.qty += qty;
+
+}else{
+
+cart.push({
+...product,
+qty:qty
+});
+
+}
+
+updateCart();
+
+}
+
+/* CART */
+
+function addToCart(id){
+
+const product = products.find(p=>p.id===id);
+
+const existing = cart.find(item=>item.id===id);
+
+if(existing){
+
+existing.qty++;
+
+}else{
+
+cart.push({...product,qty:1});
+
+}
+
+updateCart();
+
+toggleCart();
+
+}
+
+function updateCart(){
+
+const cartItems =
+document.getElementById("cartItems");
+
+cartItems.innerHTML = "";
+
+let total = 0;
+let count = 0;
+
+cart.forEach(item=>{
+
+total += item.price * item.qty;
+count += item.qty;
+
+cartItems.innerHTML += `
+
+<div class="bg-gray-100 rounded-[25px] p-4">
+
+<div class="flex gap-4">
+
+<img
+src="${item.image}"
+class="w-24 h-24 object-cover rounded-2xl"
+>
+
+<div class="flex-1">
+
+<h3 class="font-black text-lg">
+${item.title}
+</h3>
+
+<div class="text-blue-700 font-black text-2xl my-3">
+$${item.price.toLocaleString()}
+</div>
+
+<div class="flex items-center gap-3">
+
+<button
+onclick="changeQty(${item.id},-1)"
+class="w-9 h-9 rounded-full bg-red-500 text-white font-black"
+>
+-
+</button>
+
+<span class="font-black text-lg">
+${item.qty}
+</span>
+
+<button
+onclick="changeQty(${item.id},1)"
+class="w-9 h-9 rounded-full bg-green-500 text-white font-black"
+>
++
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("cartTotal").innerText =
+"$" + total.toLocaleString();
+
+document.getElementById("cartCount").innerText =
+count;
+
+}
+
+function changeQty(id,amount){
+
+const item = cart.find(i=>i.id===id);
+
+if(!item) return;
+
+item.qty += amount;
+
+if(item.qty <= 0){
+
+cart = cart.filter(i=>i.id !== id);
+
+}
+
+updateCart();
+
+}
+
+function toggleCart(){
+
+const cartSidebar =
+document.getElementById("cartSidebar");
+
+if(cartSidebar.style.right === "0px"){
+
+cartSidebar.style.right = "-500px";
+
+}else{
+
+cartSidebar.style.right = "0px";
+
+}
+
+}
+
+/* LOGIN */
+
+function openLogin(){
+
+document.getElementById("loginModal")
+.classList.remove("hidden");
+
+document.getElementById("loginModal")
+.classList.add("flex");
+
+}
+
+function closeLogin(){
+
+document.getElementById("loginModal")
+.classList.add("hidden");
+
+}
+
+function login(){
+
+const email =
+document.getElementById("email").value;
+
+const password =
+document.getElementById("password").value;
+
+if(email && password){
+
+alert("Sesión iniciada");
+
+closeLogin();
+
+}else{
+
+alert("Completa los campos");
+
+}
+
+}
+
+/* SEARCH */
+
+const searchInput =
+document.getElementById("searchInput");
+
+const suggestions =
+document.getElementById("suggestions");
+
+searchInput.addEventListener("input",()=>{
+
+const value =
+searchInput.value.toLowerCase();
+
+if(!value){
+
+suggestions.classList.add("hidden");
+renderProducts(products);
+return;
+
+}
+
+const filtered = products.filter(product=>
+product.title.toLowerCase().includes(value)
+||
+product.category.toLowerCase().includes(value)
+);
+
+renderProducts(filtered);
+
+suggestions.innerHTML = "";
+
+filtered.forEach(product=>{
+
+suggestions.innerHTML += `
+
+<div
+class="flex items-center gap-4 p-4 hover:bg-gray-100 cursor-pointer border-b"
+onclick="openProduct(${product.id})"
+>
+
+<img
+src="${product.image}"
+class="w-16 h-16 rounded-2xl object-cover"
+>
+
+<div>
+
+<div class="font-black">
+${product.title}
+</div>
+
+<div class="text-blue-700 font-bold">
+$${product.price.toLocaleString()}
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+suggestions.classList.remove("hidden");
+
+});
+
+/* NAV */
+
+function goOffers(){
+
+document.getElementById("offersSection")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+function goHome(){
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+renderProducts(products);
+
+document.getElementById("productsTitle")
+.innerText = "Productos";
+
+}
+
+/* INIT */
+
+renderProducts(products);
+renderOffers();
+renderCombos();
+
+</script>
 
 </body>
 </html>
