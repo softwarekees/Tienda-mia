@@ -1,17 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BFENJWRV7Y"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-BFENJWRV7Y');
-</script>
-
-    
     <link rel="icon" href="favicon.ico.png" type="image/x-icon">
 
 <meta charset="UTF-8">
@@ -814,7 +803,7 @@ Contacto
 
 </footer>
 
-```html
+
 <!-- ========================= -->
 <!-- PRODUCT MODAL -->
 <!-- ========================= -->
@@ -981,16 +970,336 @@ class="text-3xl"
 
 </div>
 
+
+<!-- BOTON FINALIZAR -->
+
 <button
+onclick="openCheckout()"
 class="w-full bg-green-500 hover:bg-green-400 transition text-white font-black py-4 rounded-2xl text-xl"
 >
 Finalizar compra
 </button>
 
+<!-- ===================================== -->
+<!-- CHECKOUT -->
+<!-- ===================================== -->
+
+<div
+id="checkoutModal"
+class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50 p-5"
+>
+
+<div class="bg-white w-full max-w-[1500px] rounded-[40px] overflow-hidden relative">
+
+<!-- CLOSE -->
+
+<button
+onclick="closeCheckout()"
+class="absolute top-5 right-5 text-4xl z-20"
+>
+✕
+</button>
+
+<div class="grid grid-cols-1 xl:grid-cols-2">
+
+<!-- LEFT -->
+
+<div class="p-10 border-r border-gray-200">
+
+<h2 class="text-5xl font-black mb-8">
+Métodos de pago
+</h2>
+
+<!-- RAPIPAGO -->
+
+<div class="border rounded-3xl p-6 mb-5 hover:border-blue-600 transition">
+
+<div class="flex items-center justify-between">
+
+<div>
+<h3 class="text-2xl font-black">Rapipago</h3>
+<p class="text-gray-500 mt-2">
+Pagá en efectivo desde cualquier sucursal.
+</p>
+</div>
+
+<div class="text-5xl">
+💵
 </div>
 
 </div>
-```
+
+</div>
+
+<!-- PAGO FACIL -->
+
+<div class="border rounded-3xl p-6 mb-5 hover:border-blue-600 transition">
+
+<div class="flex items-center justify-between">
+
+<div>
+<h3 class="text-2xl font-black">Pago Fácil</h3>
+<p class="text-gray-500 mt-2">
+Pagá en efectivo fácilmente.
+</p>
+</div>
+
+<div class="text-5xl">
+🏪
+</div>
+
+</div>
+
+</div>
+
+<!-- TARJETAS -->
+
+<div class="border rounded-3xl p-6 mb-5 hover:border-blue-600 transition">
+
+<div class="flex items-center justify-between">
+
+<div>
+<h3 class="text-2xl font-black">
+Tarjetas de débito/crédito
+</h3>
+
+<p class="text-gray-500 mt-2">
+Visa, Mastercard, Cabal y más.
+</p>
+</div>
+
+<div class="text-5xl">
+💳
+</div>
+
+</div>
+
+</div>
+
+<!-- TRANSFERENCIA -->
+
+<div class="border-2 border-blue-700 rounded-3xl p-6 bg-blue-50">
+
+<h3 class="text-3xl font-black text-blue-800 mb-5">
+Transferencia bancaria
+</h3>
+
+<div class="space-y-4 text-lg">
+
+<div>
+<span class="font-black">Titular:</span>
+Emanuel Kees
+</div>
+
+<div>
+<span class="font-black">CBU:</span>
+
+<div class="flex gap-3 mt-2">
+
+<input
+id="cbuInput"
+value="0140352503684752990805"
+readonly
+class="border rounded-2xl px-4 py-3 flex-1 bg-white"
+>
+
+<button
+onclick="copyCBU()"
+class="bg-blue-700 hover:bg-blue-800 text-white px-5 rounded-2xl font-black"
+>
+Copiar
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- RIGHT -->
+
+<div class="p-10 bg-gray-50">
+
+<h2 class="text-5xl font-black mb-8">
+Tu compra
+</h2>
+
+<div
+id="checkoutItems"
+class="space-y-5 max-h-[500px] overflow-y-auto pr-2"
+>
+</div>
+
+<div class="border-t pt-7 mt-7">
+
+<div class="flex justify-between text-4xl font-black mb-7">
+
+<span>Total:</span>
+
+<span id="checkoutTotal">
+$0
+</span>
+
+</div>
+
+<button
+onclick="sendWhatsAppOrder()"
+class="w-full bg-green-500 hover:bg-green-400 text-white py-5 rounded-3xl text-2xl font-black transition"
+>
+Confirmar pedido por WhatsApp
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* ===================================== */
+/* OPEN CHECKOUT */
+/* ===================================== */
+
+function openCheckout(){
+
+document.getElementById("checkoutModal")
+.classList.remove("hidden");
+
+document.getElementById("checkoutModal")
+.classList.add("flex");
+
+renderCheckout();
+
+}
+
+/* ===================================== */
+/* CLOSE CHECKOUT */
+/* ===================================== */
+
+function closeCheckout(){
+
+document.getElementById("checkoutModal")
+.classList.add("hidden");
+
+document.getElementById("checkoutModal")
+.classList.remove("flex");
+
+}
+
+/* ===================================== */
+/* RENDER CHECKOUT */
+/* ===================================== */
+
+function renderCheckout(){
+
+const container =
+document.getElementById("checkoutItems");
+
+container.innerHTML = "";
+
+let total = 0;
+
+cart.forEach(item => {
+
+total += item.price * item.qty;
+
+container.innerHTML += `
+
+<div class="bg-white rounded-3xl p-5 border">
+
+<div class="flex gap-4">
+
+<img
+src="${item.image}"
+class="w-24 h-24 object-cover rounded-2xl"
+>
+
+<div class="flex-1">
+
+<h3 class="font-black text-xl mb-2">
+${item.title}
+</h3>
+
+<div class="text-gray-500">
+Cantidad: ${item.qty}
+</div>
+
+<div class="text-blue-700 font-black text-2xl mt-3">
+$${(item.price * item.qty).toLocaleString()}
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("checkoutTotal")
+.innerText =
+"$" + total.toLocaleString();
+
+}
+
+/* ===================================== */
+/* COPY CBU */
+/* ===================================== */
+
+function copyCBU(){
+
+const cbu =
+document.getElementById("cbuInput");
+
+cbu.select();
+
+document.execCommand("copy");
+
+alert("CBU copiado");
+
+}
+
+/* ===================================== */
+/* WHATSAPP ORDER */
+/* ===================================== */
+
+function sendWhatsAppOrder(){
+
+let text =
+"Hola KEES SOFTWARE, quiero realizar esta compra:%0A%0A";
+
+let total = 0;
+
+cart.forEach(item => {
+
+text +=
+`• ${item.title} x${item.qty} - $${(item.price * item.qty).toLocaleString()}%0A`;
+
+total += item.price * item.qty;
+
+});
+
+text += `%0ATotal: $${total.toLocaleString()}`;
+
+window.open(
+`https://wa.me/5492926405465?text=${text}`,
+"_blank"
+);
+
+}
+
+</script>
 
 
 <!-- ======================================= -->
@@ -1124,7 +1433,6 @@ class="fixed bottom-7 right-7 w-16 h-16 rounded-full bg-green-500 hover:bg-green
 💬
 </a>
 
-```html
 <script>
 
 /* ===================================== */
@@ -1922,7 +2230,7 @@ renderOffers();
 updateCart();
 
 </script>
-```
+
 
 
 </body>
