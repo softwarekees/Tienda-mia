@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="icon" href="icono.png" type="image/x-icon">
+    <link rel="icon" href="../../Pagina manu/favicon.ico.png" type="image/x-icon">
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -252,72 +252,96 @@ border:1px solid #e5e7eb;
 
 /* MOBILE */
 
-@media(max-width:1200px){
+@media (max-width: 1200px){
 
 main{
-flex-direction:column;
+flex-direction: column;
 }
 
 .sidebar{
-width:100% !important;
-position:relative !important;
-top:0 !important;
+width: 100% !important;
+position: relative !important;
+top: 0 !important;
+border-radius: 25px;
 }
 
 .products-grid{
-grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
 }
 
 .hero-title{
-font-size:55px !important;
+font-size: 48px !important;
 }
 
+.container-kees{
+padding-left: 12px;
+padding-right: 12px;
+}
 }
 
-@media(max-width:700px){
+@media (max-width: 700px){
 
+/* productos 1 columna */
 .products-grid{
-grid-template-columns:1fr !important;
+grid-template-columns: 1fr !important;
 }
 
-.combo-grid{
-grid-template-columns:1fr !important;
-}
-
+/* hero más chico */
 .hero-title{
-font-size:38px !important;
-line-height:1.1;
+font-size: 28px !important;
+line-height: 1.1;
 }
 
-.search-hide{
-display:none;
+/* header más compacto */
+header .container-kees{
+flex-wrap: wrap;
+gap: 10px;
+}
+
+/* search más pequeño */
+#searchInput{
+font-size: 14px;
+padding: 12px;
+}
+
+/* carrito botón */
+button.relative{
+font-size: 24px;
+}
+
+/* modal producto */
+#productModal .grid{
+grid-template-columns: 1fr !important;
 }
 
 }
 
-
-/* ========================= */
-/* REEMPLAZA EL ZOOM */
-/* ========================= */
-
+/* ❌ IMPORTANTE: QUITAR ZOOM EN CELULAR */
+@media (max-width: 768px){
 html{
-zoom:90%;
+zoom: 100% !important;
+}
 }
 
-@media(max-width:1600px){
+@media (max-width: 700px){
 
-html{
-zoom:82%;
+header{
+padding: 10px 0;
+}
+
+header h1{
+font-size: 20px;
+}
+
+header span{
+font-size: 16px;
 }
 
 }
-
-@media(max-width:1200px){
-
-html{
-zoom:100%;
+@media (max-width: 700px){
+.sidebar{
+display: none;
 }
-
 }
 
 </style>
@@ -339,7 +363,7 @@ zoom:100%;
 <div class="w-14 h-14 rounded-full overflow-hidden bg-white border-2 border-yellow-400">
 
 <img
-src="icono.png"
+src="../../Pagina manu/favicon.ico.png"
 class="w-full h-full object-cover"
 >
 
