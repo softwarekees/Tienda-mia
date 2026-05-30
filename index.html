@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BFENJWRV7Y"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-BFENJWRV7Y');
-</script>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
 <meta charset="UTF-8">
@@ -176,6 +166,7 @@ box-sizing:border-box;
 
 html{
 scroll-behavior:smooth;
+zoom:80%;
 }
 
 body{
@@ -297,10 +288,19 @@ padding-right: 12px;
 
 @media (max-width: 700px){
 
+  @media (max-width: 768px){
+    html{
+        zoom: 85%;
+    }
+}
+
 /* 📱 MÁS "ALEJADO" (menos zoom visual) */
 body{
-transform: scale(0.97);
-transform-origin: top;
+font-size:15px;
+}
+
+.container-kees{
+max-width:1900px;
 }
 
 /* 📱 2 PRODUCTOS POR FILA */
@@ -325,8 +325,15 @@ font-size: 18px !important;
 
 /* HERO */
 .hero-title{
-font-size: 26px !important;
-line-height: 1.1;
+font-size:60px !important;
+}
+
+h2.text-8xl{
+font-size:72px !important;
+}
+
+.text-5xl{
+font-size:42px !important;
 }
 
 /* HEADER */
@@ -383,6 +390,13 @@ font-size: 28px !important;
 font-size: 22px !important;
 }
 }
+@media(max-width:700px){
+
+#offersCarousel > div{
+width:100% !important;
+}
+
+}
 
 </style>
 
@@ -403,7 +417,7 @@ font-size: 22px !important;
 <div class="w-14 h-14 rounded-full overflow-hidden bg-white border-2 border-yellow-400">
 
 <img
-src="icono.png"
+src="favicon.png"
 class="w-full h-full object-cover"
 >
 
@@ -481,6 +495,7 @@ class="bg-white/10 hover:bg-white/20 transition text-white font-bold px-6 py-3 r
 
 </header>
 
+
 <section class="hidden">
 
 <h1>
@@ -500,372 +515,230 @@ Comprá online auriculares, periféricos, accesorios gamer y tecnología premium
 </p>
 
 </section>
+<!-- ========================= -->
+<!-- MENU CATEGORIAS -->
+<!-- ========================= -->
 
+<section class="bg-white border-b border-gray-300 sticky top-[88px] z-40 shadow-sm">
 
-<!-- MAIN -->
+<div class="container-kees">
 
-<main class="container-kees pt-32 flex gap-6">
+<nav class="flex items-center justify-center gap-12 h-16 font-bold text-gray-700 text-lg">
 
-<!-- SIDEBAR -->
+<div class="relative group">
 
-<aside class="sidebar sidebar-box w-[340px] rounded-[35px] shadow-lg p-7 h-fit sticky top-28">
-
-<h2 class="text-4xl font-black mb-8">
-Menú
-</h2>
-
-<div class="space-y-3 mb-8">
-
-<button
-onclick="goHome()"
-class="w-full flex items-center gap-3 bg-blue-700 hover:bg-blue-800 text-white font-black px-5 py-4 rounded-2xl transition text-left text-xl"
->
-🏠 Inicio
-</button>
-
-<button
-onclick="goOffers()"
-class="w-full flex items-center gap-3 bg-yellow-400 hover:bg-yellow-300 text-black font-black px-5 py-4 rounded-2xl transition text-left text-xl"
->
-🔥 Ofertas
-</button>
-
-</div>
-
-<h3 class="text-3xl font-black mb-5">
-Categorías
-</h3>
-
-<!-- AURICULARES -->
-
-<details open class="border-b py-4">
-
-<summary class="font-black text-xl cursor-pointer flex justify-between">
+<button class="hover:text-blue-700 transition">
 🎧 Auriculares
-<span>⌄</span>
-</summary>
+</button>
 
-<div class="mt-4 space-y-3 pl-3">
+<div class="hidden group-hover:block absolute top-full left-0 bg-white rounded-3xl shadow-2xl p-5 min-w-[250px]">
 
-<button
-onclick="showCategory('Auriculares')"
-class="block text-gray-600 hover:text-blue-700"
->
+<button onclick="showSubCategory('Bluetooth')" class="block w-full text-left py-3 hover:text-blue-700">
 Bluetooth
 </button>
 
-<button
-onclick="showCategory('Auriculares')"
-class="block text-gray-600 hover:text-blue-700"
->
-Con cable
+<button onclick="showSubCategory('Cable')" class="block w-full text-left py-3 hover:text-blue-700">
+Con Cable
 </button>
 
 </div>
 
-</details>
+</div>
 
-<!-- GAMING -->
+<div class="relative group">
 
-<details class="border-b py-4">
-
-<summary class="font-black text-xl cursor-pointer flex justify-between">
+<button class="hover:text-blue-700 transition">
 🎮 Gaming
-<span>⌄</span>
-</summary>
+</button>
 
-<div class="mt-4 space-y-3 pl-3">
+<div class="hidden group-hover:block absolute top-full left-0 bg-white rounded-3xl shadow-2xl p-5 min-w-[250px]">
 
-<button
-onclick="showCategory('Gaming')"
-class="block text-gray-600 hover:text-blue-700"
->
+<button onclick="showSubCategory('Joystick')" class="block w-full text-left py-3 hover:text-blue-700">
 Joystick
 </button>
 
 </div>
 
-</details>
+</div>
 
-<!-- PERIFERICOS -->
+<div class="relative group">
 
-<details class="border-b py-4">
-
-<summary class="font-black text-xl cursor-pointer flex justify-between">
+<button class="hover:text-blue-700 transition">
 🖱️ Periféricos
-<span>⌄</span>
-</summary>
+</button>
 
-<div class="mt-4 space-y-3 pl-3">
+<div class="hidden group-hover:block absolute top-full left-0 bg-white rounded-3xl shadow-2xl p-5 min-w-[250px]">
 
-<button
-onclick="showCategory('Perifericos')"
-class="block text-gray-600 hover:text-blue-700"
->
+<button onclick="showSubCategory('Mouse')" class="block w-full text-left py-3 hover:text-blue-700">
 Mouse
 </button>
 
-<button
-onclick="showCategory('Perifericos')"
-class="block text-gray-600 hover:text-blue-700"
->
+<button onclick="showSubCategory('Bluetooth USB')" class="block w-full text-left py-3 hover:text-blue-700">
 Bluetooth USB
 </button>
 
 </div>
 
-</details>
+</div>
 
-<!-- CABLES -->
+<div class="relative group">
 
-<details class="border-b py-4">
-
-<summary class="font-black text-xl cursor-pointer flex justify-between">
+<button class="hover:text-blue-700 transition">
 🔌 Cables
-<span>⌄</span>
-</summary>
+</button>
 
-<div class="mt-4 space-y-3 pl-3">
+<div class="hidden group-hover:block absolute top-full left-0 bg-white rounded-3xl shadow-2xl p-5 min-w-[250px]">
 
-<button
-onclick="showCategory('Cables')"
-class="block text-gray-600 hover:text-blue-700"
->
+<button onclick="showSubCategory('HDMI')" class="block w-full text-left py-3 hover:text-blue-700">
 HDMI
 </button>
 
-<button
-onclick="showCategory('Cables')"
-class="block text-gray-600 hover:text-blue-700"
->
+<button onclick="showSubCategory('USB-C')" class="block w-full text-left py-3 hover:text-blue-700">
 USB-C
 </button>
 
 </div>
 
-</details>
+</div>
 
-<div class="bg-gray-100 rounded-3xl p-6 mt-8">
-
-<h3 class="font-black text-3xl mb-3">
-🚚 Envíos
-</h3>
-
-<p class="text-gray-600 text-lg">
-Envíos rápidos a todo el país.
-</p>
+</nav>
 
 </div>
 
-</aside>
+</section>
 
-<!-- CONTENT -->
+<!-- ========================= -->
+<!-- CONTENIDO -->
+<!-- ========================= -->
 
-<section class="flex-1 min-w-0">
+<main class="container-kees pt-36">
 
 <!-- HERO -->
 
-<div class="relative rounded-[35px] overflow-hidden h-[430px] mb-8 shadow-2xl">
+<section class="mb-10">
+
+<div class="relative rounded-[35px] overflow-hidden h-[600px] shadow-2xl">
 
 <img
-src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1600&auto=format&fit=crop"
+src="fotopared.png"
 class="absolute inset-0 w-full h-full object-cover"
 >
 
-<div class="absolute inset-0 hero-overlay"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-[#04142ef5] via-[#04142eb5] to-transparent"></div>
 
-<div class="relative z-10 h-full flex items-center px-14">
+<div class="relative z-10 h-full flex items-center px-16">
 
-<div class="max-w-2xl text-white">
+<div class="max-w-4xl text-white">
 
 <div class="bg-yellow-400 text-black font-black inline-block px-6 py-3 rounded-full mb-6">
 OFERTAS EXCLUSIVAS
 </div>
 
-<h2 class="hero-title text-7xl font-black leading-tight mb-6">
-Tecnología premium para vos
+<h2 class="text-8xl font-black leading-tight mb-6">
+Tecnología Premium
 </h2>
 
-<p class="text-2xl text-gray-200 mb-8">
-Auriculares, gaming, cables y periféricos.
+<p class="text-3xl text-gray-200 mb-8">
+Gaming, auriculares, accesorios y mucho más.
 </p>
 
 <button
 onclick="goOffers()"
-class="btn-yellow px-9 py-4 rounded-2xl text-black font-black text-xl"
+class="btn-yellow px-10 py-5 rounded-2xl text-black font-black text-xl"
 >
-Ver ofertas
+Ver Ofertas
 </button>
 
 </div>
 
-</div>
-
-</div>
-
-<!-- TOP -->
-
-<div id="topSections">
-
-<!-- OFERTAS -->
-
-<section
-id="offersSection"
-class="bg-white rounded-[35px] p-7 shadow-lg mb-10 overflow-hidden"
->
-
-<div class="flex items-center justify-between mb-8">
-
-<div>
-
-<h3 class="text-4xl font-black text-gray-800 mb-2">
-🔥 Ofertas especiales
-</h3>
-
-<p class="text-gray-500 text-lg">
-Las mejores promociones de KEES SOFTWARE
-</p>
-
-</div>
-
-<div class="flex gap-3">
-
-<button
-onclick="prevOffers()"
-class="w-12 h-12 rounded-full bg-gray-200 hover:bg-gray-300 text-xl font-black"
->
-←
-</button>
-
-<button
-onclick="nextOffers()"
-class="w-12 h-12 rounded-full bg-gray-200 hover:bg-gray-300 text-xl font-black"
->
-→
-</button>
-
-</div>
-
-</div>
-
-<div class="overflow-hidden">
-
-<div
-id="offersCarousel"
-class="flex gap-6 transition-all duration-500"
->
 </div>
 
 </div>
 
 </section>
 
-<!-- PRODUCTS -->
+<!-- LINEA -->
+
+<hr class="border-black/20 mb-10">
+
+<!-- OFERTAS -->
+
+<section id="offersSection" class="mb-12">
+
+<div class="flex justify-between items-center mb-8">
 
 <div>
 
-<div class="flex items-center justify-between mb-7">
+<h3 class="text-5xl font-black">
+🔥 Ofertas Especiales
+</h3>
+
+<p class="text-gray-500 text-xl mt-2">
+Promociones destacadas
+</p>
+
+</div>
+
+</div>
+
+<div class="relative overflow-hidden">
+
+<div
+id="offersCarousel"
+class="flex transition-transform duration-700"
+>
+</div>
+
+<button
+onclick="prevOffer()"
+class="absolute left-2 top-1/2 -translate-y-1/2 bg-white shadow-lg rounded-full w-12 h-12"
+>
+◀
+</button>
+
+<button
+onclick="nextOffer()"
+class="absolute right-2 top-1/2 -translate-y-1/2 bg-white shadow-lg rounded-full w-12 h-12"
+>
+▶
+</button>
+
+</div>
+
+</section>
+
+<!-- LINEA -->
+
+<hr class="border-black/20 mb-10">
+
+<!-- PRODUCTOS -->
+
+<section>
+
+<div class="flex justify-between items-center mb-8">
 
 <h3
 id="productsTitle"
-class="text-4xl font-black text-gray-800"
+class="text-5xl font-black"
 >
 Productos
 </h3>
 
-<div class="text-gray-500 font-semibold">
-+120 productos
+<div class="text-gray-500 font-bold">
++120 Productos
 </div>
 
 </div>
 
 <div
 id="productsGrid"
-class="products-grid grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6"
+class="products-grid grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4"
 >
-</div>
-
 </div>
 
 </section>
 
 </main>
-
-<!-- FOOTER -->
-
-<footer class="mt-16 bg-[#03143b] text-white">
-
-<div class="container-kees py-16 grid grid-cols-1 md:grid-cols-4 gap-10">
-
-<div>
-
-<h2 class="text-4xl font-black mb-5">
-KEES SOFTWARE
-</h2>
-
-<p class="text-gray-300 leading-relaxed text-lg">
-Tecnología premium, periféricos, auriculares y accesorios con envíos a todo el país.
-</p>
-
-</div>
-
-<div>
-
-<h3 class="text-2xl font-black mb-5">
-Categorías
-</h3>
-
-<div class="space-y-3 text-gray-300 text-lg">
-
-<div>Auriculares</div>
-<div>Gaming</div>
-<div>Periféricos</div>
-<div>Cables</div>
-
-</div>
-
-</div>
-
-<div>
-
-<h3 class="text-2xl font-black mb-5">
-Información
-</h3>
-
-<div class="space-y-3 text-gray-300 text-lg">
-
-<div>Envíos</div>
-<div>Garantía</div>
-<div>Medios de pago</div>
-<div>Soporte</div>
-
-</div>
-
-</div>
-
-<div>
-
-<h3 class="text-2xl font-black mb-5">
-Contacto
-</h3>
-
-<div class="space-y-3 text-gray-300 text-lg">
-
-<div>📞 +54 9 2926 40-5465</div>
-<div>📍 Argentina</div>
-<div>✉️ softwarekees@gmail.com</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="border-t border-white/10 text-center py-6 text-gray-400 text-lg">
-© 2026 KEES SOFTWARE - Todos los derechos reservados
-</div>
-
-</footer>
 
 
 <!-- ========================= -->
@@ -1034,15 +907,16 @@ class="text-3xl"
 
 </div>
 
-
-<!-- BOTON FINALIZAR -->
-
 <button
 onclick="openCheckout()"
 class="w-full bg-green-500 hover:bg-green-400 transition text-white font-black py-4 rounded-2xl text-xl"
 >
 Finalizar compra
 </button>
+
+</div>
+
+</div>
 
 <!-- ===================================== -->
 <!-- CHECKOUT -->
@@ -1054,8 +928,6 @@ class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50 p-5"
 >
 
 <div class="bg-white w-full max-w-[1500px] rounded-[40px] overflow-hidden relative">
-
-<!-- CLOSE -->
 
 <button
 onclick="closeCheckout()"
@@ -1074,73 +946,43 @@ class="absolute top-5 right-5 text-4xl z-20"
 Métodos de pago
 </h2>
 
-<!-- RAPIPAGO -->
-
-<div class="border rounded-3xl p-6 mb-5 hover:border-blue-600 transition">
-
+<div class="border rounded-3xl p-6 mb-5">
 <div class="flex items-center justify-between">
-
 <div>
 <h3 class="text-2xl font-black">Rapipago</h3>
 <p class="text-gray-500 mt-2">
 Pagá en efectivo desde cualquier sucursal.
 </p>
 </div>
-
-<div class="text-5xl">
-💵
+<div class="text-5xl">💵</div>
+</div>
 </div>
 
-</div>
-
-</div>
-
-<!-- PAGO FACIL -->
-
-<div class="border rounded-3xl p-6 mb-5 hover:border-blue-600 transition">
-
+<div class="border rounded-3xl p-6 mb-5">
 <div class="flex items-center justify-between">
-
 <div>
 <h3 class="text-2xl font-black">Pago Fácil</h3>
 <p class="text-gray-500 mt-2">
 Pagá en efectivo fácilmente.
 </p>
 </div>
-
-<div class="text-5xl">
-🏪
+<div class="text-5xl">🏪</div>
+</div>
 </div>
 
-</div>
-
-</div>
-
-<!-- TARJETAS -->
-
-<div class="border rounded-3xl p-6 mb-5 hover:border-blue-600 transition">
-
+<div class="border rounded-3xl p-6 mb-5">
 <div class="flex items-center justify-between">
-
 <div>
 <h3 class="text-2xl font-black">
 Tarjetas de débito/crédito
 </h3>
-
 <p class="text-gray-500 mt-2">
 Visa, Mastercard, Cabal y más.
 </p>
 </div>
-
-<div class="text-5xl">
-💳
+<div class="text-5xl">💳</div>
 </div>
-
 </div>
-
-</div>
-
-<!-- TRANSFERENCIA -->
 
 <div class="border-2 border-blue-700 rounded-3xl p-6 bg-blue-50">
 
@@ -1156,6 +998,7 @@ Emanuel Kees
 </div>
 
 <div>
+
 <span class="font-black">CBU:</span>
 
 <div class="flex gap-3 mt-2">
@@ -1169,7 +1012,7 @@ class="border rounded-2xl px-4 py-3 flex-1 bg-white"
 
 <button
 onclick="copyCBU()"
-class="bg-blue-700 hover:bg-blue-800 text-white px-5 rounded-2xl font-black"
+class="bg-blue-700 text-white px-5 rounded-2xl font-black"
 >
 Copiar
 </button>
@@ -1227,143 +1070,6 @@ Confirmar pedido por WhatsApp
 
 </div>
 
-<script>
-
-/* ===================================== */
-/* OPEN CHECKOUT */
-/* ===================================== */
-
-function openCheckout(){
-
-document.getElementById("checkoutModal")
-.classList.remove("hidden");
-
-document.getElementById("checkoutModal")
-.classList.add("flex");
-
-renderCheckout();
-
-}
-
-/* ===================================== */
-/* CLOSE CHECKOUT */
-/* ===================================== */
-
-function closeCheckout(){
-
-document.getElementById("checkoutModal")
-.classList.add("hidden");
-
-document.getElementById("checkoutModal")
-.classList.remove("flex");
-
-}
-
-/* ===================================== */
-/* RENDER CHECKOUT */
-/* ===================================== */
-
-function renderCheckout(){
-
-const container =
-document.getElementById("checkoutItems");
-
-container.innerHTML = "";
-
-let total = 0;
-
-cart.forEach(item => {
-
-total += item.price * item.qty;
-
-container.innerHTML += `
-
-<div class="bg-white rounded-3xl p-5 border">
-
-<div class="flex gap-4">
-
-<img
-src="${item.image}"
-class="w-24 h-24 object-cover rounded-2xl"
->
-
-<div class="flex-1">
-
-<h3 class="font-black text-xl mb-2">
-${item.title}
-</h3>
-
-<div class="text-gray-500">
-Cantidad: ${item.qty}
-</div>
-
-<div class="text-blue-700 font-black text-2xl mt-3">
-$${(item.price * item.qty).toLocaleString()}
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-document.getElementById("checkoutTotal")
-.innerText =
-"$" + total.toLocaleString();
-
-}
-
-/* ===================================== */
-/* COPY CBU */
-/* ===================================== */
-
-function copyCBU(){
-
-const cbu =
-document.getElementById("cbuInput");
-
-cbu.select();
-
-document.execCommand("copy");
-
-alert("CBU copiado");
-
-}
-
-/* ===================================== */
-/* WHATSAPP ORDER */
-/* ===================================== */
-
-function sendWhatsAppOrder(){
-
-let text =
-"Hola KEES SOFTWARE, quiero realizar esta compra:%0A%0A";
-
-let total = 0;
-
-cart.forEach(item => {
-
-text +=
-`• ${item.title} x${item.qty} - $${(item.price * item.qty).toLocaleString()}%0A`;
-
-total += item.price * item.qty;
-
-});
-
-text += `%0ATotal: $${total.toLocaleString()}`;
-
-window.open(
-`https://wa.me/5492926405465?text=${text}`,
-"_blank"
-);
-
-}
-
-</script>
 
 
 <!-- ======================================= -->
@@ -1487,6 +1193,84 @@ Crear cuenta
 
 </div>
 
+<!-- FOOTER -->
+
+<footer class="mt-16 bg-[#03143b] text-white">
+
+<div class="container-kees py-16 grid grid-cols-1 md:grid-cols-4 gap-10">
+
+<div>
+
+<h2 class="text-4xl font-black mb-5">
+KEES SOFTWARE
+</h2>
+
+<p class="text-gray-300 leading-relaxed">
+Tecnología premium, periféricos, auriculares, gaming y accesorios con envíos a todo el país.
+</p>
+
+</div>
+
+<div>
+
+<h3 class="text-2xl font-black mb-5">
+Categorías
+</h3>
+
+<ul class="space-y-3 text-gray-300">
+
+<li>Auriculares</li>
+<li>Gaming</li>
+<li>Periféricos</li>
+<li>Cables</li>
+
+</ul>
+
+</div>
+
+<div>
+
+<h3 class="text-2xl font-black mb-5">
+Información
+</h3>
+
+<ul class="space-y-3 text-gray-300">
+
+<li>Envíos a todo el país</li>
+<li>Garantía</li>
+<li>Medios de pago</li>
+<li>Soporte</li>
+
+</ul>
+
+</div>
+
+<div>
+
+<h3 class="text-2xl font-black mb-5">
+Contacto
+</h3>
+
+<ul class="space-y-3 text-gray-300">
+
+<li>📞 +54 9 2926 40-5465</li>
+<li>📧 softwarekees@gmail.com</li>
+<li>📍 Argentina</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<div class="border-t border-white/10 py-6 text-center text-gray-400">
+
+© 2026 KEES SOFTWARE - Todos los derechos reservados
+
+</div>
+
+</footer>
+
 <!-- WHATSAPP -->
 
 <a
@@ -1496,6 +1280,10 @@ class="fixed bottom-7 right-7 w-16 h-16 rounded-full bg-green-500 hover:bg-green
 >
 💬
 </a>
+
+
+
+
 
 <script>
 
@@ -1709,50 +1497,50 @@ const products = [
 
 {
 id:1,
-title:"Auricular manos libres River - Boca",
+title:"Auricular manos libres con cable River - Boca",
 price:1100,
 category:"Auriculares",
-image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200&auto=format&fit=crop"
+image:"TU_IMAGEN"
 },
 
 {
 id:2,
-title:"Auricular A6S inalámbrico Bluetooth",
+title:"Auricular A6S True inalámbrico 5.3 Bluetooth",
 price:4180,
 category:"Auriculares",
-image:"https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?q=80&w=1200&auto=format&fit=crop"
+image:"TU_IMAGEN"
 },
 
 {
 id:3,
-title:"Joystick PS3 SONY",
+title:"Joystick PS3 SONY calidad premium",
 price:9360,
 category:"Gaming",
-image:"https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=1200&auto=format&fit=crop"
+image:"TU_IMAGEN"
 },
 
 {
 id:4,
-title:"Cable USB Tipo-C mallado",
+title:"Cable USB Tipo-C mallado Datos + Carga 60W",
 price:1265,
 category:"Cables",
-image:"https://images.unsplash.com/photo-1580894908361-967195033215?q=80&w=1200&auto=format&fit=crop"
+image:"TU_IMAGEN"
 },
 
 {
 id:5,
-title:"Auricular IBEK ER-25",
+title:"Auricular con micrófono IBEK ER-25",
 price:1239,
 category:"Auriculares",
-image:"https://images.unsplash.com/photo-1484704849700-f032a568e944?q=80&w=1200&auto=format&fit=crop"
+image:"TU_IMAGEN"
 },
 
 {
 id:6,
-title:"Bluetooth USB NETMAK",
+title:"Receptor USB Bluetooth 5.0 NETMAK",
 price:4180,
 category:"Perifericos",
-image:"https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop"
+image:"TU_IMAGEN"
 },
 
 {
@@ -1760,31 +1548,55 @@ id:7,
 title:"Auricular Bluetooth P47",
 price:3740,
 category:"Auriculares",
-image:"https://images.unsplash.com/photo-1519677100203-a0e668c92439?q=80&w=1200&auto=format&fit=crop"
+image:"TU_IMAGEN"
 },
 
 {
 id:8,
-title:"Mouse inalámbrico GTC",
+title:"Mouse inalámbrico GTC MIG-117",
 price:4620,
 category:"Perifericos",
-image:"https://images.unsplash.com/photo-1527814050087-3793815479db?q=80&w=1200&auto=format&fit=crop"
+image:"TU_IMAGEN"
 },
 
 {
 id:9,
-title:"Cable HDMI Full HD",
+title:"Cable HDMI Full HD 4K Mallado",
 price:1843,
 category:"Cables",
-image:"https://images.unsplash.com/photo-1550009158-9ebf69173e03?q=80&w=1200&auto=format&fit=crop"
+image:"TU_IMAGEN"
 },
 
 {
 id:10,
-title:"Cable Samsung Turbo",
+title:"Cable USB-C a USB-C Samsung Turbo",
 price:2860,
 category:"Cables",
-image:"https://images.unsplash.com/photo-1580894894513-541e068a3e2b?q=80&w=1200&auto=format&fit=crop"
+image:"TU_IMAGEN"
+},
+
+{
+id:11,
+title:"Auricular A6S inalámbrico Bluetooth 5.3",
+price:4009,
+category:"Auriculares",
+image:"TU_IMAGEN"
+},
+
+{
+id:12,
+title:"Auricular IN EAR manos libres TIME AU-11003",
+price:1408,
+category:"Auriculares",
+image:"TU_IMAGEN"
+},
+
+{
+id:13,
+title:"Auricular Samsung Premium",
+price:2079,
+category:"Auriculares",
+image:"TU_IMAGEN"
 }
 
 ];
@@ -1847,40 +1659,50 @@ openCart();
 /* RENDER PRODUCTS */
 /* ===================================== */
 
-function renderProducts(list){
+function renderProducts(list = products){
 
 productsGrid.innerHTML = "";
 
-list.forEach(product=>{
+list.forEach(product => {
 
 productsGrid.innerHTML += `
 
-<div class="product-card bg-white rounded-[30px] overflow-hidden shadow-lg border border-gray-100">
+<div
+onclick="openProduct(${product.id})"
+class="bg-white cursor-pointer border border-gray-200 hover:border-blue-500 transition-all duration-300 overflow-hidden"
+>
+
+<div class="bg-white p-4 flex items-center justify-center h-[230px]">
 
 <img
 src="${product.image}"
-class="h-64 w-full object-cover"
+class="max-h-full max-w-full object-contain"
 >
 
-<div class="p-5">
-
-<div class="text-xs font-black text-blue-700 mb-3 uppercase">
-${product.category}
 </div>
 
-<h3 class="font-black text-xl mb-3 min-h-[70px]">
+<div class="px-4 pb-4">
+
+<h3 class="text-[14px] font-semibold text-gray-800 leading-5 min-h-[55px]">
 ${product.title}
 </h3>
 
-<div class="text-3xl font-black text-blue-700 mb-5">
-$${product.price.toLocaleString()}
+<div class="mt-2 text-gray-400 text-xs">
+En stock
+</div>
+
+<div class="mt-3 text-pink-600 text-2xl font-black">
+$${product.price.toLocaleString("es-AR")}
+</div>
+
+<div class="text-xs text-gray-500">
+Precio por unidad
 </div>
 
 <button
-onclick="openProduct(${product.id})"
-class="btn-primary w-full py-3 rounded-2xl font-black text-lg"
+class="mt-3 w-full bg-pink-600 hover:bg-pink-700 text-white py-2 text-sm font-bold transition"
 >
-Ver producto
+VER DETALLE
 </button>
 
 </div>
